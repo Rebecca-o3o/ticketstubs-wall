@@ -1,0 +1,126 @@
+import React from 'react';
+import {Link} from 'react-router';
+
+import axios from './axios';
+
+
+
+//===== components =====//
+
+export class Welcome extends React.Component{
+    constructor (props) {
+        super(props);
+    }
+    render() {
+        // console.log("React Component - Welcome - this.props: ",this.props);
+        return (
+            <div>
+                <div style={welcomeStyle}>
+                    <div style={{backgroundColor: 'transparent'}}>
+                        <Logo />
+                        Willkommen in deiner Kleingärtner Community!
+                    </div>
+                </div>
+                <div  style={welcomeFormStyle}>
+                    {this.props.children}
+                </div>
+            </div>
+        );
+    }
+}
+
+export class Registration extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+    }
+    submit(){
+        axios.post('/register',{
+            first: this.state.first,
+            last: this.state.last,
+            email: this.state.email,
+            password: this.state.password
+        }).then((res)=>{
+            console.log(res);
+            location.replace('/');
+        }).catch((err)=>{
+            console.log(err);
+            //TODO: message to user
+        });
+    }
+    handleClick(e){
+        //class methods are not bound by default - bind this.handleClick before!
+        //setting state
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    render(){
+        return (
+
+            <div >
+                <div>
+                    <input type="text" name="first" placeholder="Vorname" onChange={this.handleClick} />
+                    <input type="text" name="last" placeholder="Nachname" onChange={this.handleClick} />
+                    <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
+                    <input type="password" name="password" placeholder="Passwort" onChange={this.handleClick} />
+                    <div>
+                        <button type="submit" name="submit" onClick={e => this.submit()}>Neu anmelden</button>
+                    </div>
+                </div>
+                <div>
+                    Oder logge dich <Link to="/login">hier</Link> ein.
+                </div>
+            </div>
+
+        );
+    }
+}
+
+export class Login extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+    }
+    submit(){
+        axios.post('/login',{
+            email: this.state.email,
+            password: this.state.password
+        }).then((res)=>{
+            console.log(res);
+            location.replace('/');
+        }).catch((err)=>{
+            console.log(err);
+            location.replace('/');
+            //TODO: message to user
+        });
+    }
+    handleClick(e){
+        //class methods are not bound by default - bind this.handleClick before!
+        //setting state
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+    render(){
+        return (
+            <div>
+                <div>
+                    <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
+                    <input type="password" name="password" placeholder="Passwort" onChange={this.handleClick} />
+                    <div>
+                        <button type="submit" name="submit" onClick={e => this.submit()}>Einloggen</button>
+                    </div>
+                </div>
+                <div>
+                    Noch kein Konto? Registriere dich <Link to="/">hier</Link>.
+                </div>
+            </div>
+        );
+    }
+}
