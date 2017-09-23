@@ -16,7 +16,9 @@ rgb(240, 240, 240);
 rgb(255, 255, 255);
 rgb(226, 0, 115);
 #e80a89;
-rgb(236, 63, 22);*/
+rgb(236, 63, 22);
+#ef562a;
+*/
 
 
 a {
@@ -113,8 +115,22 @@ p {
 }
 
 /*#hamburgermenu {
-    height: 50px;
+height: 50px;
 }*/
+
+
+/*===== Ticket Stubs Wall ===== */
+
+.ticketstubs-wall-container {
+    background: linear-gradient(-45deg, rgb(236, 63, 22), rgb(226, 0, 115));
+}
+
+.single-ticketstub {
+    border: red solid 1px;
+    height: 100px;
+    width: 280px;
+    list-style: none;
+}
 
 
 @media (max-width: 400px) {
