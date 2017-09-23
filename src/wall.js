@@ -64,9 +64,9 @@ export class Wall extends React.Component{
                 </header>
 
                 <div>
-                    you are at your wall component
                     <ul className="ticketstubs-wall-container">
                         {/* {getTicketstubs && renderTicketstubs()} */}
+                        you are at your wall component
 
                         <li
                             className="single-ticketstub"
