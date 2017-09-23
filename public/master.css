@@ -17,16 +17,8 @@ rgb(226, 0, 115);
 rgb(236, 63, 22);*/
 
 
-header {
-    background-color: rgb(0,0,0);
-}
-
-h1 {
-    font-weight: 200;
-}
-
-p {
-    color: rgb(110, 110, 110);
+a {
+    color: rgb(236, 63, 22);
 }
 
 button {
@@ -39,6 +31,28 @@ button {
     border-radius: 2px;
     color: rgb(240, 240, 240);
 }
+
+footer {
+    background-color: rgb(0,0,0);
+    font-size: 12px;
+    color: rgb(110, 110, 110);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(0,0,0);
+}
+
+h1 {
+    font-weight: 200;
+}
+
+p {
+    color: rgb(154, 154, 154);
+}
+
 
 .header {
     background-color: rgb(0,0,0);
@@ -74,6 +88,19 @@ button {
     opacity: .5;
 }
 
+
+/*#hamburgermenu {
+    color: rgb(226, 0, 115);
+    height: 50px;
+}*/
+
+/*#hamburgermenu img/hamburgermenu.svg {
+fill: #ff0000;
+}*/
+
+/*.svg-icon path {
+  fill: #ff0000;
+}*/
 
 @media (max-width: 400px) {
 }

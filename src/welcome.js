@@ -1,5 +1,7 @@
 import React from 'react';
 // import {Link} from 'react-router';
+import {Menu} from './menu';
+import {Footer} from './footer';
 
 
 //===== components =====//
@@ -12,6 +14,10 @@ export class Welcome extends React.Component{
         // console.log("React Component - Welcome - this.props: ",this.props);
         return (
             <div>
+
+                <header>
+                    <Menu />
+                </header>
 
                 <div className="welcome-background">
 
@@ -46,9 +52,12 @@ export class Welcome extends React.Component{
 
                     </p>
 
+                    {this.props.children}
+
                 </div>
 
-                {this.props.children}
+
+                <Footer />
 
             </div>
         );
