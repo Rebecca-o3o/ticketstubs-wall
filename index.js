@@ -35,7 +35,7 @@ app.use(cookieSession({
 app.use(csurf());
 
 app.use(function(req,res,next){
-    res.cookie('garden_-t', req.csrfToken());
+    res.cookie('wall_-t', req.csrfToken());
     next();
 });
 

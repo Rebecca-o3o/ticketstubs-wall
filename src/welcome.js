@@ -11,7 +11,7 @@ export class Welcome extends React.Component{
     render() {
         // console.log("React Component - Welcome - this.props: ",this.props);
         return (
-            <div>
+            <div className="welcome-section">
 
                 Welcome to your Online TicketStub Wall!
 

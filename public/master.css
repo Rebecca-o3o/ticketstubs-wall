@@ -1,7 +1,30 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Gotham SSm A','Gotham SSm B',sans-serif;
 }
+
+header {
+    background-color: rgb(0,0,0);
+}
+
+.welcome-section {
+    background-color: rgb(041, 041, 041);
+}
+
+/*rgb(0,0,0);
+rgb(026, 026, 026);
+rgb(019, 019, 019);
+rgb(041, 041, 041);
+rgb(067, 067, 067);
+rgb(110, 110, 110);
+rgb(154, 154, 154);
+rgb(240, 240, 240);
+rgb(255, 255, 255);
+
+
+rgb(226, 0, 115);
+rgb(236, 63, 22);*/
 
 
 @media (max-width: 400px) {
