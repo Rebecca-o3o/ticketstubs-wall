@@ -54,7 +54,7 @@ if (process.env.NODE_ENV == 'production') {
 const client = knox.createClient({
     key: secret.AWS_KEY,
     secret: secret.AWS_SECRET,
-    bucket: 'rksocialnetwork'
+    bucket: 'rkticketstubswall'
 });
 
 
