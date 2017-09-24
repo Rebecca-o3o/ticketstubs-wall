@@ -39,9 +39,12 @@ if(location.pathname == "/welcome/")  {
         <Provider store={store}>
             <Router history={browserHistory}>
                 <Route path="/" component={Wall}>
-                    {/* <IndexRoute component={Wall} /> */}
-                    {/* <Route path='/events/:userid' component={eventlist} />
-                    <Route path='/events/:userid/addticketstub' component={addticketstub} /> */}
+                    {/* <IndexRoute component={Wall} />
+                    <Route path='/events/:userid' component={eventlist} />
+                    <Route path='/events/:userid/addticketstub' component={addticketstub} />
+                    <Route path="event/:id" component={Event}/>
+                    <Route path="artist/:id" component={Artist}/>
+                    <Route path="venue/:id" component={Venue}/> */}
                 </Route>
             </Router>
         </Provider>

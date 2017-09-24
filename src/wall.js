@@ -48,7 +48,7 @@ export class Wall extends React.Component{
     }
 
     handleInputChange(e){
-        console.log("fn: handleInputChange");
+        // console.log("fn: handleInputChange");
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -75,9 +75,9 @@ export class Wall extends React.Component{
         console.log("about to start axios submitTicketStub with form data:", formData);
 
         axios.post('/UploadTicketStub', formData).then((serverResponse)=>{
-            console.log("in axios post /UploadTicketStub");
-            console.log(formData);
-            console.log(serverResponse.data);
+            // console.log("in axios post /UploadTicketStub");
+            // console.log(formData);
+            // console.log(serverResponse.data);
             this.setState({
                 // TODO: immediatly display stub here
                 showUploaderWindow: false
