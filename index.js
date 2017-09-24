@@ -80,7 +80,8 @@ var uploader = multer({
 
 //upload to AWS
 function uploadToS3(req, res) {
-    console.log("fn. uploader to s3:", req);
+    console.log("fn. uploader to s3:", req.file.filename, req.body);
+    
     const s3Request = client.put(req.file.filename, {
         'Content-Type': req.file.mimetype,
         'Content-Length': req.file.size,
@@ -98,9 +99,16 @@ function uploadToS3(req, res) {
             success: wasSuccessful
         });
         if(wasSuccessful) {
-            console.log("user id to upload pic:", req.session.user.id);
-            db.addProfilePic(req.file.filename, req.session.user.id);
-            console.log("about to delete local file");
+
+            db.addTicketStub(
+                req.file.filename,
+                req.session.user.id,
+                req.body.event,
+                req.body.date,
+                req.body.time,
+                req.body.venue
+            );
+            // console.log("about to delete local file");
             fs.unlink(req.file.path);
         }
     });
@@ -192,6 +200,18 @@ app.post('/login', (req,res)=>{
     });
 });
 
+app.post('/UploadTicketStub', uploader.single('file'), uploadToS3, function(req, res) {
+
+    if (req.file) {
+        res.json({
+            success: true
+        });
+    } else {
+        res.json({
+            success: false
+        });
+    }
+});
 
 app.get('/api/logout', (req, res) => {
     console.log("user has logged out / was:", req.session.user);
@@ -200,6 +220,13 @@ app.get('/api/logout', (req, res) => {
     return res.redirect('/welcome/');
 });
 
+
+// app.get('/wall/:userid', function(req, res){
+//     console.log("Route /wall/:userid - session User:", req.session.user);
+//     res.json({
+//         success: true
+//     });
+// });
 
 // ===== * ===== //
 

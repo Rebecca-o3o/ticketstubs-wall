@@ -3,6 +3,8 @@ const db = spicedPg(process.env.DATABASE_URL || require('./secrets').db);
 
 var bcrypt = require('bcryptjs');
 
+
+// ===== User Registration and Login Logic ===== //
 var hashPassword = function (plainTextPassword) {
     return new Promise(function(resolve, reject) {
         bcrypt.genSalt(function(err, salt) {
@@ -39,20 +41,30 @@ var addUser =  function(queryValues){
     return db.query(queryText, queryValues);
 };
 
-// searching for plaintextpassword of usser in users database
 var getHashandUser = function (email){
     const queryText = "SELECT password, id, first, last FROM users WHERE email=$1";
-    // console.log("LOGIN USER QUERY TEXT HIER:" + queryText);
     return db.query(queryText, [email]);
 };
 
-///____________________________________///
 
+// ===== Ticket Stubs Logic ===== //
+var addTicketStub = function(file, user, event, date, time, venue){
 
+    const queryText = 'INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
+
+    console.log("starting db query store stub image");
+    return db.query(queryText, [file, user, event, date, time, venue]).then((result)=>{
+        // console.log(result.rows[0]);
+        return result.rows[0];
+    }).catch((err)=>{
+        console.log(err);
+    });
+};
 
 module.exports = {
     hashPassword,
     checkPassword,
     addUser,
     getHashandUser,
+    addTicketStub,
 };
