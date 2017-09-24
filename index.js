@@ -81,7 +81,7 @@ var uploader = multer({
 //upload to AWS
 function uploadToS3(req, res) {
     console.log("fn. uploader to s3:", req.file.filename, req.body);
-    
+
     const s3Request = client.put(req.file.filename, {
         'Content-Type': req.file.mimetype,
         'Content-Length': req.file.size,
@@ -213,20 +213,24 @@ app.post('/UploadTicketStub', uploader.single('file'), uploadToS3, function(req,
     }
 });
 
+app.get('/api/getTicketstubs/:userid', function(req, res){
+    console.log("/api/getTicketstubs/:userid- session User:", req.session.user);
+    db.getStubsLists(req.session.user.id).then(function(stubs){
+
+        console.log(stubs);
+        res.json(stubs);
+
+    }).catch(function(err){
+        console.log(err);
+    });
+});
+
 app.get('/api/logout', (req, res) => {
     console.log("user has logged out / was:", req.session.user);
     // req.session.user = null;
     req.session = null;
     return res.redirect('/welcome/');
 });
-
-
-// app.get('/wall/:userid', function(req, res){
-//     console.log("Route /wall/:userid - session User:", req.session.user);
-//     res.json({
-//         success: true
-//     });
-// });
 
 // ===== * ===== //
 
