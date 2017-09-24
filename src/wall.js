@@ -21,7 +21,8 @@ export class Wall extends React.Component{
 
         this.showUploader = this.showUploader.bind(this);
         this.hideUploader = this.hideUploader.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
         this.submitTicketStub = this.submitTicketStub.bind(this);
     }
 
@@ -39,26 +40,44 @@ export class Wall extends React.Component{
     }
 
     hideUploader(){
-        // console.log("klick und showuploader deaktiviert");
+        // console.log("klick und hideuploader deaktiviert");
         this.setState({
-            showUploaderWindow: false
+            showUploaderWindow: false,
+            error: null
         });
     }
 
-    handleChange(e) {
-        // console.log("handle change:", e.target.files[0]);
+    handleInputChange(e){
+        console.log("fn: handleInputChange");
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    handleFileChange(e){
         this.setState({
             file: e.target.files[0]
         });
     }
 
-    submitTicketStub(){
-        // console.log("starting axios profile pic upload");
-        var formData = new FormData;
-        formData.append('file', this.state.file);
 
-        axios.post('/UploadTicketStub', formData).then((result)=>{
-            console.log(result.data);
+    submitTicketStub(){
+        // e.preventDefault()
+        const {file, event, date, time, venue} = this.state;
+
+        var formData = new FormData;
+        formData.append('file', file);
+        formData.append('event', event);
+        formData.append('date', date);
+        formData.append('time', time);
+        formData.append('venue', venue);
+
+        console.log("about to start axios submitTicketStub with form data:", formData);
+
+        axios.post('/UploadTicketStub', formData).then((serverResponse)=>{
+            console.log("in axios post /UploadTicketStub");
+            console.log(formData);
+            console.log(serverResponse.data);
             this.setState({
                 // TODO: immediatly display stub here
                 showUploaderWindow: false
@@ -156,7 +175,8 @@ export class Wall extends React.Component{
                         {this.state.error && <div>{this.state.error}</div> }
 
                         {this.state.showUploaderWindow && <UploadTicketStub
-                            handleChange = {(e) => this.handleChange(e)}
+                            handleInputChange = {(e) => this.handleInputChange(e)}
+                            handleFileChange = {(e) => this.handleFileChange(e)}
                             submitTicketStub={this.submitTicketStub}
                             showUploader={this.showUploader}
                             hideUploader={this.hideUploader}/>}

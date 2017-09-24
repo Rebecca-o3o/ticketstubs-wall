@@ -28,15 +28,21 @@ export class UploadTicketStub extends React.Component{
     }
 
     render() {
-        console.log("React Component - UploadTicketStub - this.props: ", this.props);
+        // console.log("React Component - UploadTicketStub - this.props: ", this.props);
 
         return (
 
             <div>
+
+                <input type="text" name="event" placeholder="Event" onChange={this.props.handleInputChange} />
+                <input type="text" name="date" placeholder="Date" onChange={this.props.handleInputChange} />
+                <input type="text" name="time" placeholder="Time" onChange={this.props.handleInputChange} />
+                <input type="text" name="venue" placeholder="Venue" onChange={this.props.handleInputChange} />
+
                 <input
-                    name="image"
+                    name="ticketstub"
                     type="file"
-                    onChange = {this.props.handleChange}
+                    onChange = {this.props.handleFileChange}
                 />
                 <button
                     onClick={this.props.submitTicketStub} >Upload Stub</button>
