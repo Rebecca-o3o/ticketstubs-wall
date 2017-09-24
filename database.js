@@ -62,13 +62,16 @@ var addTicketStub = function(file, user, event, date, time, venue){
 };
 
 var getStubsLists = function(userid){
-    const queryText = `SELECT id, stub_img, event_name, event_date, event_time, venue FROM userstubs WHERE stub_owner_id = $1`;
+    const queryText = `SELECT id, stub_img AS img, event_name AS eventName, event_date AS eventDate, event_time AS eventTime, venue FROM userstubs WHERE stub_owner_id = $1`;
 
     return db.query(queryText,[userid]).then(function(dbStubs){
+
+        console.log(dbStubs);
+
         return dbStubs.rows.map(stub=>{
-            const {id, img, eventName, eventDate, eventTime, venue} = stub;
+            const {id, img, eventname, eventdate, eventtime, venue} = stub;
             return {
-                id, eventName, eventDate, eventTime, venue,
+                id, eventname, eventdate, eventtime, venue,
                 stubImgUrl: "https://s3.amazonaws.com/rkticketstubswall/" + img,
             };
         });
