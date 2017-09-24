@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS users;
--- DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS userstubs;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -12,24 +12,27 @@ CREATE TABLE users (
 
 
 -- INSERT INTO users (first, last, email, password) VALUES ('disco', 'duck', 'disco@duck.com', '1234');
---
---
--- CREATE TABLE userevent  (
---     id SERIAL PRIMARY KEY,
---     created_by_user_id INTEGER REFERENCES users(id) NOT NULL,
---     company
---     rating
---     artist_id
---     event_id
---     level
---     section
---     row
---     seat
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
---
---
---
+
+CREATE TABLE userstubs  (
+    id SERIAL PRIMARY KEY,
+    stub_img VARCHAR(300) NOT NULL,
+    stub_owner_id INTEGER REFERENCES users(id) NOT NULL,
+    users_plus_one VARCHAR(200),
+    users_rating INTEGER,
+    -- artist_id INTEGER REFERENCES artist(id),
+    -- event_id INTEGER REFERENCES event(id),
+    -- level
+    -- section
+    -- row
+    -- seat
+    event_name VARCHAR(200),
+    event_date VARCHAR(200),
+    event_time VARCHAR(200),
+    venue VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 -- CREATE TABLE events (
 --     id SERIAL PRIMARY KEY,
 --     created_by_user_id INTEGER REFERENCES users(id) NOT NULL,
