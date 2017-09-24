@@ -37,6 +37,10 @@ button {
     color: rgb(240, 240, 240);
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 footer {
     background-color: rgb(0,0,0);
     font-size: 12px;
