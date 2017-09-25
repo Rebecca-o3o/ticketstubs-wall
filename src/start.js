@@ -10,7 +10,7 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 import reducer from './reducers';
 import { Welcome } from './welcome';
 import { Registration, Login } from './auths';
-import { Wall } from './wall';
+import Wall from './wall';
 
 
 
@@ -39,8 +39,8 @@ if(location.pathname == "/welcome/")  {
         <Provider store={store}>
             <Router history={browserHistory}>
                 <Route path="/" component={Wall}>
-                    {/* <IndexRoute component={Wall} />
-                    <Route path='/events/:userid' component={eventlist} />
+                    <IndexRoute component={Wall} />
+                    {/* <Route path='/events/:userid' component={eventlist} />
                     <Route path='/events/:userid/addticketstub' component={addticketstub} />
                     <Route path="event/:id" component={Event}/>
                     <Route path="artist/:id" component={Artist}/>
