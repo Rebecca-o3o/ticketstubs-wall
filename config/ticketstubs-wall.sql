@@ -32,8 +32,9 @@ CREATE TABLE userstubs  (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('XyIntBvWNjvr9M892i1OZn31VDRHgGv5.jpg', '1', 'BUSH', '29.9.17', '8pm', 'E-Werk Köln')
--- INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('s_j3bNI6PlBjSal2g3oWDSRLpkgbwI36.jpg', '1', 'The Rolling Stones', '9. Okt 2017', '19:15 Uhr', 'ESPRIT arena')
+INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('XyIntBvWNjvr9M892i1OZn31VDRHgGv5.jpg', '1', 'BUSH', '29.9.17', '8pm', 'E-Werk Köln');
+INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('s_j3bNI6PlBjSal2g3oWDSRLpkgbwI36.jpg', '1', 'The Rolling Stones', '9. Okt 2017', '19:15 Uhr', 'ESPRIT arena');
+INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('3WxOcqaVjYPY44I0ANlRqIZCPeKgOLv4.jpg', '1', 'Rush', '29.5.11', '18.30', 'Festhalle Frankfurt');
 
 
 -- CREATE TABLE events (
