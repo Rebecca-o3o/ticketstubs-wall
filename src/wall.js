@@ -126,6 +126,10 @@ export class Wall extends React.Component{
                         <SingleStub
                             id={singleStub.id}
                             stubImgSrc={singleStub.stubImgUrl}
+                            stubEvent={singleStub.eventname}
+                            stubDate={singleStub.eventdate}
+                            stubTime={singleStub.eventtime}
+                            stubVenue={singleStub.eventvenue}
                             // showUploader={this.showUploader}
                             // handleInputChange = {(e) => this.handleInputChange(e)}
                             // handleFileChange = {(e) => this.handleFileChange(e)}
