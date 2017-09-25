@@ -27,8 +27,8 @@ export class Wall extends React.Component{
     }
 
     componentDidMount(){
-        console.log("Wall component did mount - this.props:", this.props);
-        console.log("Wall component did mount - this.state:", this.state);
+        // console.log("Wall component did mount - this.props:", this.props);
+        // console.log("Wall component did mount - this.state:", this.state);
         this.props.dispatch(loadTicketstubs());
     }
 
@@ -96,7 +96,6 @@ export class Wall extends React.Component{
         // if(!this.state.userInfo) {
         //     return <div className='loading'>Loading...</div>;
         // }
-        console.log(this.props.stubs);
 
         const randomColor = () => {
             var letters = '0123456789ABCDEF';
@@ -111,7 +110,7 @@ export class Wall extends React.Component{
 
         const renderTicketStubs = () => {
 
-            console.log("fn: renderTicketStubs");
+            // console.log("fn: renderTicketStubs");
 
             return stubs.map(singleStub => {
 
@@ -215,8 +214,6 @@ export class Wall extends React.Component{
 
 
 function mapStateToProps(state){
-
-    console.log("you are at mapStateToProps of Comp Wall");
 
     return {
         stubs: state.stubs

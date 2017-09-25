@@ -17,35 +17,54 @@ export class SingleStub extends React.Component{
 
     render() {
 
-        const randomColor = () => {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        };
+        // const randomColor = () => {
+        //     var letters = '0123456789ABCDEF';
+        //     var color = '#';
+        //     for (var i = 0; i < 6; i++) {
+        //         color += letters[Math.floor(Math.random() * 16)];
+        //     }
+        //     return color;
+        // };
+
+        console.log(this.props);
 
         return (
 
-            <li
-                className="single-ticketstub"
-                style={{backgroundColor: randomColor()}}>SingleStubComp
+            <div>
+
+                {this.props.id}
+                {this.props.eventname}
+                {this.props.eventdate}
+                {this.props.eventtime}
+                {this.props.venue}
 
                 <img
-                    src={this.props.imgsrc}
+                    src={this.props.stubImgSrc}
                     alt={`stub ID ${this.props.id}`}
+                    className="single-ticketstub"
                 />
-
-                <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/>
-
-                {/* <AddIcon
-                    showUploader={this.props.howUploader}
-                /> */}
-
-                <img className="icon-edit-ticketstub" src="/img/pencil-edit.svg" alt= "icon add ticket stub"/>
-
-            </li>
+            </div>
+            //
+            //
+            // <li
+            //     className="single-ticketstub"
+            //     // style={{backgroundColor: randomColor()}}
+            //     >SingleStubComp
+            //
+            //     <img
+            //         src={this.props.stubImgUrl}
+            //         alt={`stub ID ${this.props.id}`}
+            //     />
+            //
+            //     <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/>
+            //
+            //     {/* <AddIcon
+            //         showUploader={this.props.howUploader}
+            //     /> */}
+            //
+            //     <img className="icon-edit-ticketstub" src="/img/pencil-edit.svg" alt= "icon add ticket stub"/>
+            //
+            // </li>
 
         );
     }
@@ -53,7 +72,7 @@ export class SingleStub extends React.Component{
 
 
 function mapStateToProps(state){
-    console.log("you are at mapStateToProps of Comp SingleStub");
+
     return {
         stubs: state.stubs
     };

@@ -4,7 +4,7 @@ import axios from './axios';
 
 export function loadTicketstubs(){
 
-    console.log("REDUX ACTION loadTicketstubs");
+    // console.log("REDUX ACTION loadTicketstubs");
 
     let url = '/api/getTicketstubs/1';
     // TODO path + userId;

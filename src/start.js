@@ -15,8 +15,8 @@ import Wall from './wall';
 
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
-// store.subscribe(() => store.getState());
-store.subscribe(() => console.log("Start.js global store", store.getState()));
+store.subscribe(() => store.getState());
+// store.subscribe(() => console.log("Start.js global store", store.getState()));
 
 let router;
 
