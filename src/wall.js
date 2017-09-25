@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import axios from './axios';
 
+import Draggable from 'react-draggable';
+import {DraggableCore} from 'react-draggable';
+
+import axios from './axios';
 import {Menu} from './menu';
 import {Footer} from './footer';
 import SingleStub from './single-stub';
@@ -107,6 +110,7 @@ export class Wall extends React.Component{
         };
 
         const {dispatch, stubs} = this.props;
+        const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
 
         const renderTicketStubs = () => {
 
@@ -119,9 +123,8 @@ export class Wall extends React.Component{
                 return (
                     <div>
 
-                        <div>
-                            single stub ID: {singleStub.id}
-                        </div>
+                        <Draggable {...dragHandlers}>
+                            <div className="box">
 
                         <SingleStub
                             id={singleStub.id}
@@ -137,7 +140,8 @@ export class Wall extends React.Component{
                             // showUploader={this.showUploader}
                             // hideUploader={this.hideUploader}
                         />
-
+                    </div>
+                    </Draggable>
 
                     </div>
                 );
@@ -156,8 +160,6 @@ export class Wall extends React.Component{
                 <div>
                     <ul className="ticketstubs-wall-container">
 
-                        you are at your wall component
-
                         <li
                             className="single-ticketstub"
                             style={{backgroundColor: randomColor()}}>Rando
@@ -174,8 +176,6 @@ export class Wall extends React.Component{
                         </li>
 
                         {stubs && renderTicketStubs()}
-
-                        <SingleStub />
 
                         <li
                             className="single-ticketstub"
@@ -202,6 +202,9 @@ export class Wall extends React.Component{
                             showUploader={this.showUploader}
                             hideUploader={this.hideUploader}/>}
 
+                        <Draggable {...dragHandlers}>
+                            <div>I can be dragged anywhere</div>
+                        </Draggable>
                     </ul>
                 </div>
 
