@@ -5,9 +5,9 @@ import axios from './axios';
 
 import {Menu} from './menu';
 import {Footer} from './footer';
-// import {SingleTicketStub} from './single-ticket-stub';
+import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
-// import {getTicketstubs} from './actions';
+import {loadTicketstubs} from './actions';
 
 
 //===== components =====//
@@ -27,8 +27,9 @@ export class Wall extends React.Component{
     }
 
     componentDidMount(){
-        // this.props.dispatch(getTicketstubs());
-        console.log("Wall component did mount");
+        console.log("Wall component did mount - this.props:", this.props);
+        console.log("Wall component did mount - this.state:", this.state);
+        this.props.dispatch(loadTicketstubs());
     }
 
 
@@ -59,7 +60,6 @@ export class Wall extends React.Component{
             file: e.target.files[0]
         });
     }
-
 
     submitTicketStub(){
         // e.preventDefault()
@@ -96,6 +96,7 @@ export class Wall extends React.Component{
         // if(!this.state.userInfo) {
         //     return <div className='loading'>Loading...</div>;
         // }
+        console.log(this.props.stubs);
 
         const randomColor = () => {
             var letters = '0123456789ABCDEF';
@@ -106,25 +107,39 @@ export class Wall extends React.Component{
             return color;
         };
 
-        // const {dispatch, getTicketstubs} = this.props;
+        const {dispatch, stubs} = this.props;
 
-        // const renderTicketstubs = () => {
-        //
-        //     return getTicketstubs.map(singleStub => {
-        //         return (
-        //             <div>
-        //
-        //                 <div>
-        //                     <SingleTicketStub
-        //                         className="single-ticketstub"
-        //                         id={singleStub.id}
-        //                         imgsrc={singleStub.imgUrl}/>
-        //                 </div>
-        //
-        //             </div>
-        //         );
-        //     });
-        // };
+        const renderTicketStubs = () => {
+
+            console.log("fn: renderTicketStubs");
+
+            return stubs.map(singleStub => {
+
+                console.log("fn: stubs.map");
+
+                return (
+                    <div>
+
+                        <div>
+                            single stub ID: {singleStub.id}
+                        </div>
+
+                        <SingleStub
+                            id={singleStub.id}
+                            stubImgSrc={singleStub.stubImgUrl}
+                            // showUploader={this.showUploader}
+                            // handleInputChange = {(e) => this.handleInputChange(e)}
+                            // handleFileChange = {(e) => this.handleFileChange(e)}
+                            // submitTicketStub={this.submitTicketStub}
+                            // showUploader={this.showUploader}
+                            // hideUploader={this.hideUploader}
+                        />
+
+
+                    </div>
+                );
+            });
+        };
 
 
         return (
@@ -137,35 +152,38 @@ export class Wall extends React.Component{
 
                 <div>
                     <ul className="ticketstubs-wall-container">
-                        {/* {getTicketstubs && renderTicketstubs()} */}
+
                         you are at your wall component
 
                         <li
                             className="single-ticketstub"
                             style={{backgroundColor: randomColor()}}>Rando
 
-                            <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/>
+                            {/* <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/> */}
 
                             <AddIcon
                                 showUploader={this.showUploader}
                             />
 
-                            <img className="icon-edit-ticketstub" src="/img/pencil-edit.svg" alt= "icon add ticket stub"/>
+                            {/* <img className="icon-edit-ticketstub" src="/img/pencil-edit.svg" alt= "icon add ticket stub"/> */}
 
 
                         </li>
+
+                        {stubs && renderTicketStubs()}
+
+                        <SingleStub />
+
                         <li
                             className="single-ticketstub"
                             style={{backgroundColor: randomColor()}}>Rando
                         </li>
+
                         <li
                             className="single-ticketstub"
                             style={{backgroundColor: randomColor()}}>Rando
                         </li>
-                        <li
-                            className="single-ticketstub"
-                            style={{backgroundColor: randomColor()}}>Rando
-                        </li>
+
                         <li
                             className="single-ticketstub"
                             style={{backgroundColor: randomColor()}}>Rando
@@ -181,7 +199,6 @@ export class Wall extends React.Component{
                             showUploader={this.showUploader}
                             hideUploader={this.hideUploader}/>}
 
-
                     </ul>
                 </div>
 
@@ -196,11 +213,14 @@ export class Wall extends React.Component{
     }
 }
 
-//
-// function mapStateToProps(state){
-//     return {
-//         getTicketstubs: state.getTicketstubs
-//     };
-// }
-//
-// export default connect(mapStateToProps)(Wall);
+
+function mapStateToProps(state){
+
+    console.log("you are at mapStateToProps of Comp Wall");
+
+    return {
+        stubs: state.stubs
+    };
+}
+
+export default connect(mapStateToProps)(Wall);

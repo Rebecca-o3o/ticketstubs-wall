@@ -1,11 +1,12 @@
 export default function reducer(state = {}, action) {
 
+    console.log("REDUX REDUCER - action.type:", action.type);
 
-    if (action.type == 'LOAD_TICKET_STUBS') {
+    if (action.type === 'LOAD_TICKET_STUBS') {
         console.log('REDUX - REDUCER - fn: loadTicketstubs');
 
-        state = Object.assign({}, state, {
-            stub: action.loadTicketstubs
+        return Object.assign({}, state, {
+            stubs: action.stubs
         });
     }
 

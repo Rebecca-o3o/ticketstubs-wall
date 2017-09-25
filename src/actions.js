@@ -1,21 +1,21 @@
 import axios from './axios';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 
 
-export function loadTicketstubs(userId){
+export function loadTicketstubs(){
 
-    let url = '/api/getTicketstubs/' + userId;
+    console.log("REDUX ACTION loadTicketstubs");
+
+    let url = '/api/getTicketstubs/1';
+    // TODO path + userId;
 
     return axios.get(url).then((serverResponse) => {
 
-        if (!serverResponse.data) {
-            browserHistory.push('/');
-        }
-        else {
-            return {
-                type: 'LOAD_TICKET_STUBS',
-                stubs: serverResponse.data
-            };
-        }
+        console.log(serverResponse.data);
+
+        return {
+            type: 'LOAD_TICKET_STUBS',
+            stubs: serverResponse.data
+        };
     });
 }
