@@ -32,6 +32,9 @@ CREATE TABLE userstubs  (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('XyIntBvWNjvr9M892i1OZn31VDRHgGv5.jpg', '1', 'BUSH', '29.9.17', '8pm', 'E-Werk Köln')
+-- INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ('s_j3bNI6PlBjSal2g3oWDSRLpkgbwI36.jpg', '1', 'The Rolling Stones', '9. Okt 2017', '19:15 Uhr', 'ESPRIT arena')
+
 
 -- CREATE TABLE events (
 --     id SERIAL PRIMARY KEY,
