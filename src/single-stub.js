@@ -12,10 +12,20 @@ import {loadTicketstubs} from './actions';
 export class SingleStub extends React.Component{
     constructor(props){
         super(props);
+        // this.handleHover = this.handleHover.bind(this);
     }
 
 
+    // handleHover(){
+    //     this.setState({
+    //         isHovered: !this.state.isHovered
+    //     });
+    // }
+
     render() {
+
+        // const stubHover = this.state.isHovered ? "pulse animated" : "";
+        // return <button className={stubHover} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}></button>
 
         // const randomColor = () => {
         //     var letters = '0123456789ABCDEF';
@@ -26,22 +36,25 @@ export class SingleStub extends React.Component{
         //     return color;
         // };
 
-        console.log(this.props);
+        // console.log(this.props);
 
         return (
 
             <div>
-
+                {/*
                 {this.props.id}
-                {this.props.eventname}
-                {this.props.eventdate}
-                {this.props.eventtime}
-                {this.props.venue}
+                {this.props.stubEvent}
+                {this.props.stubDate}
+                {this.props.stubTime}
+                {this.props.stubVenue} */}
 
                 <img
                     src={this.props.stubImgSrc}
                     alt={`stub ID ${this.props.id}`}
                     className="single-ticketstub"
+                    // className={stubHover}
+                    // onMouseEnter={this.handleHover}
+                    // onMouseLeave={this.handleHover}
                 />
             </div>
             //
