@@ -68,11 +68,11 @@ export class Registration extends React.Component{
                     <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
                     <input type="password" name="password" placeholder="Passwort" onChange={this.handleClick} />
                     <div>
-                        <button type="submit" name="submit" onClick={e => this.submit()}>Neu anmelden</button>
+                        <button type="submit" name="submit" onClick={e => this.submit()}>Register</button>
                     </div>
                 </div>
                 <div>
-                    Oder logge dich <Link to="/login">hier</Link> ein.
+                    Or login <Link to="/login">here</Link>.
                 </div>
             </div>
 
@@ -114,11 +114,11 @@ export class Login extends React.Component{
                     <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
                     <input type="password" name="password" placeholder="Passwort" onChange={this.handleClick} />
                     <div>
-                        <button type="submit" name="submit" onClick={e => this.submit()}>Einloggen</button>
+                        <button type="submit" name="submit" onClick={e => this.submit()}>Log in</button>
                     </div>
                 </div>
                 <div>
-                    Noch kein Konto? Registriere dich <Link to="/">hier</Link>.
+                    No account? Register <Link to="/">here</Link>.
                 </div>
             </div>
         );

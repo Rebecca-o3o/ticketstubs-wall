@@ -87,12 +87,12 @@ export class Welcome extends React.Component{
                     </div>
 
 
-                    <p>
+                    {/* <p>
 
                         <button onClick={this.openModal}>Register</button>
                         <button onClick={this.openModal}>Login</button>
 
-                    </p>
+                    </p> */}
 
                     {this.props.children}
 
