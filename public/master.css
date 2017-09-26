@@ -71,6 +71,7 @@ header {
     top:0px;
     left:0px;
     position: fixed;
+    z-index: 10;
 }
 
 h1 {
@@ -135,6 +136,10 @@ p {
 .Check-icon {
     width: 20px;
     margin-right: 10px;
+}
+
+.menue {
+    display: inline-flex;
 }
 
 /*#hamburgermenu {
