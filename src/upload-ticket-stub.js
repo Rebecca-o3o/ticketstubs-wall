@@ -32,22 +32,33 @@ export class UploadTicketStub extends React.Component{
 
         return (
 
-            <div>
+            <div className="modal">
 
-                <input type="text" name="event" placeholder="Event" onChange={this.props.handleInputChange} />
-                <input type="text" name="date" placeholder="Date" onChange={this.props.handleInputChange} />
-                <input type="text" name="time" placeholder="Time" onChange={this.props.handleInputChange} />
-                <input type="text" name="venue" placeholder="Venue" onChange={this.props.handleInputChange} />
+                <div>
+                    <input type="text" name="event" placeholder="Event" onChange={this.props.handleInputChange} />
+                </div>
 
-                <input
-                    name="ticketstub"
-                    type="file"
-                    onChange = {this.props.handleFileChange}
-                />
-                <button
-                    onClick={this.props.submitTicketStub} >Upload Stub</button>
-                <button
-                    onClick={this.props.hideUploader} >Cancel</button>
+                <div>
+                    <input type="text" name="date" placeholder="Date" onChange={this.props.handleInputChange} />
+                    <input type="text" name="time" placeholder="Time" onChange={this.props.handleInputChange} />
+                </div>
+                <div>
+                    <input type="text" name="venue" placeholder="Venue" onChange={this.props.handleInputChange} />
+                </div>
+                <div>
+                    <input
+                        name="ticketstub"
+                        type="file"
+                        onChange = {this.props.handleFileChange}
+                    />
+                </div>
+                <div>
+                    <button
+                        onClick={this.props.submitTicketStub} >Upload Stub</button>
+                    <button
+                        onClick={this.props.hideUploader} >Cancel</button>
+                </div>
+
             </div>
         );
     }

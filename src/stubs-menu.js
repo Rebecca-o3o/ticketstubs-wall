@@ -23,12 +23,11 @@ export class StubsMenu extends React.Component {
                 <Link to="/">Home</Link>
                 <Link to="/wall/:userid">My Wall</Link>
                 <Link to="/events/:userid">My Eventlist</Link>
-                <Link to="/events/:userid/addticketstub">Add a ticket stub</Link>
+                <a
+                    onClick={ this.props.showUploader }
+                >Add a new stub</a>
 
                 {/* <a id="home" className="menu-item" href="/">Home</a> */}
-                {/* <a id="about" className="menu-item" href="/about">About</a>
-                <a id="contact" className="menu-item" href="/contact">Contact</a>
-                <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
 
                 <a href="/api/logout">Logout</a>
             </Menu>

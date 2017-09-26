@@ -227,7 +227,9 @@ export class Wall extends React.Component{
             <div>
 
                 <header>
-                    <StubsMenu />
+                    <StubsMenu
+                        showUploader={this.showUploader}
+                    />
                 </header>
 
                 <div className="ticketstubs-wall-container">
