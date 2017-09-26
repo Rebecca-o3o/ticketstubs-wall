@@ -11,6 +11,7 @@ import {Footer} from './footer';
 import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
 import {loadTicketstubs} from './actions';
+import {DragIcon, EditIcon} from './stub-action-icons';
 
 
 //===== components =====//
@@ -27,6 +28,11 @@ export class Wall extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
         this.submitTicketStub = this.submitTicketStub.bind(this);
+
+        this.getInitialState = this.getInitialState.bind(this);
+        this.handleDrag = this.handleDrag.bind(this);
+        this.onStart = this.onStart.bind(this);
+        this.onStop = this.onStop.bind(this);
     }
 
     componentDidMount(){
@@ -94,6 +100,41 @@ export class Wall extends React.Component{
     }
 
 
+    getInitialState() {
+        return {
+            activeDrags: 0,
+            deltaPosition: {
+                x: 0, y: 0
+            },
+            controlledPosition: {
+                x: -400, y: 200
+            }
+        };
+    }
+
+    handleDrag(e, ui) {
+        const {x, y} = this.state.deltaPosition;
+        this.setState({
+            deltaPosition: {
+                x: x + ui.deltaX,
+                y: y + ui.deltaY,
+            }
+        });
+    }
+
+    onStart() {
+        this.setState({
+            activeDrags: ++this.state.activeDrags
+        });
+    }
+
+    onStop() {
+        this.setState({
+            activeDrags: --this.state.activeDrags
+        });
+    }
+
+
     render() {
 
         // if(!this.state.userInfo) {
@@ -111,6 +152,7 @@ export class Wall extends React.Component{
 
         const {dispatch, stubs} = this.props;
         const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+        const {deltaPosition} = this.state;
 
         const renderTicketStubs = () => {
 
@@ -118,32 +160,63 @@ export class Wall extends React.Component{
 
             return stubs.map(singleStub => {
 
-                console.log("fn: stubs.map");
+                // console.log("fn: stubs.map - singleStub:", singleStub);
+                // console.log("fn: stubs.map - stubImgUrl:", singleStub.stubImgUrl);
+
+                const imageUrl = singleStub.stubImgUrl;
 
                 return (
-                    <div>
 
-                        <Draggable {...dragHandlers}>
-                            <div className="box">
 
-                        <SingleStub
-                            id={singleStub.id}
-                            stubImgSrc={singleStub.stubImgUrl}
-                            stubEvent={singleStub.eventname}
-                            stubDate={singleStub.eventdate}
-                            stubTime={singleStub.eventtime}
-                            stubVenue={singleStub.eventvenue}
-                            // showUploader={this.showUploader}
-                            // handleInputChange = {(e) => this.handleInputChange(e)}
-                            // handleFileChange = {(e) => this.handleFileChange(e)}
-                            // submitTicketStub={this.submitTicketStub}
-                            // showUploader={this.showUploader}
-                            // hideUploader={this.hideUploader}
-                        />
-                    </div>
+                    <Draggable bounds="parent" handle=".cursor"
+                        // onDrag={this.handleDrag}
+                        {...dragHandlers}>
+                        <div
+                            className="box no-cursor"
+                            style={{ backgroundImage: `url(${imageUrl})` }}
+                            // style={{ content: `url(${imageUrl})` }}
+                            // style={{backgroundColor: randomColor()}}
+                        >
+                            <DragIcon />
+                            {/* <div>You must click my handle to drag me</div> */}
+                            {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
+                        </div>
                     </Draggable>
 
-                    </div>
+
+                    // <Draggable onDrag={this.handleDrag} {...dragHandlers}>
+                    //     <div className="box">
+                    //         <div>I track my deltas</div>
+                    //         <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div>
+                    //     </div>
+                    // </Draggable>
+
+
+                    //{/* <Draggable bounds="parent" handle=".cursor" {...dragHandlers}>
+                    //     <div
+                    //         className="box no-cursor"
+                    //         className="box"
+                    //     >
+                    //
+                    //         <SingleStub
+                    //             id={singleStub.id}
+                    //             stubImgSrc={singleStub.stubImgUrl}
+                    //             stubEvent={singleStub.eventname}
+                    //             stubDate={singleStub.eventdate}
+                    //             stubTime={singleStub.eventtime}
+                    //             stubVenue={singleStub.eventvenue}
+                    //
+                    //             showUploader={this.showUploader}
+                    //             handleInputChange = {(e) => this.handleInputChange(e)}
+                    //             handleFileChange = {(e) => this.handleFileChange(e)}
+                    //             submitTicketStub={this.submitTicketStub}
+                    //             showUploader={this.showUploader}
+                    //             hideUploader={this.hideUploader}
+                    //         />
+                    //     </div>
+                    // </Draggable> */}
+
+
                 );
             });
         };
@@ -157,60 +230,34 @@ export class Wall extends React.Component{
                     <Menu />
                 </header>
 
-                <div>
-                    <ul className="ticketstubs-wall-container">
+                <div className="ticketstubs-wall-container">
 
-                        <li
-                            className="single-ticketstub"
-                            style={{backgroundColor: randomColor()}}>Rando
+                    {stubs && renderTicketStubs()}
 
-                            {/* <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/> */}
+                    {this.state.error && <div>{this.state.error}</div> }
 
+                    {this.state.showUploaderWindow && <UploadTicketStub
+                        handleInputChange = {(e) => this.handleInputChange(e)}
+                        handleFileChange = {(e) => this.handleFileChange(e)}
+                        submitTicketStub={this.submitTicketStub}
+                        showUploader={this.showUploader}
+                        hideUploader={this.hideUploader}/>}
+
+
+                    <Draggable bounds="parent" handle=".cursor"
+                        // onDrag={this.handleDrag}
+                        {...dragHandlers}>
+                        <div className="box no-cursor" style={{backgroundColor: randomColor()}}>
+                            <DragIcon />
                             <AddIcon
                                 showUploader={this.showUploader}
                             />
+                            <div>Add a new stub here!</div>
+                            {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
+                        </div>
+                    </Draggable>
 
-                            {/* <img className="icon-edit-ticketstub" src="/img/pencil-edit.svg" alt= "icon add ticket stub"/> */}
-
-
-                        </li>
-
-                        {stubs && renderTicketStubs()}
-
-                        <li
-                            className="single-ticketstub"
-                            style={{backgroundColor: randomColor()}}>Rando
-                        </li>
-
-                        <li
-                            className="single-ticketstub"
-                            style={{backgroundColor: randomColor()}}>Rando
-                        </li>
-
-                        <li
-                            className="single-ticketstub"
-                            style={{backgroundColor: randomColor()}}>Rando
-                        </li>
-
-
-                        {this.state.error && <div>{this.state.error}</div> }
-
-                        {this.state.showUploaderWindow && <UploadTicketStub
-                            handleInputChange = {(e) => this.handleInputChange(e)}
-                            handleFileChange = {(e) => this.handleFileChange(e)}
-                            submitTicketStub={this.submitTicketStub}
-                            showUploader={this.showUploader}
-                            hideUploader={this.hideUploader}/>}
-
-                        <Draggable {...dragHandlers}>
-                            <div>I can be dragged anywhere</div>
-                        </Draggable>
-                    </ul>
                 </div>
-
-                <div>
-                </div>
-
 
                 <Footer />
 

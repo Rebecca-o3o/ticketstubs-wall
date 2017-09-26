@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
 import {loadTicketstubs} from './actions';
-
+import {DragIcon, EditIcon} from './stub-action-icons';
 
 //===== components =====//
 
@@ -40,7 +40,10 @@ export class SingleStub extends React.Component{
 
         return (
 
-            <div>
+            <div
+                className="box no-cursor single-ticketstub"
+                style={`content: url('https://s3.amazonaws.com/rkticketstubswall/3WxOcqaVjYPY44I0ANlRqIZCPeKgOLv4.jpg'}`}
+            >
                 {/*
                 {this.props.id}
                 {this.props.stubEvent}
@@ -48,17 +51,19 @@ export class SingleStub extends React.Component{
                 {this.props.stubTime}
                 {this.props.stubVenue} */}
 
-                <img
+                {/* <img
                     src={this.props.stubImgSrc}
                     alt={`stub ID ${this.props.id}`}
-                    className="single-ticketstub"
+                    className="box no-cursor single-ticketstub"
+                    // className="box no-cursor"
                     // className={stubHover}
                     // onMouseEnter={this.handleHover}
                     // onMouseLeave={this.handleHover}
-                />
+                /> */}
+                <DragIcon />
+                <EditIcon />
             </div>
-            //
-            //
+            
             // <li
             //     className="single-ticketstub"
             //     // style={{backgroundColor: randomColor()}}
@@ -69,7 +74,7 @@ export class SingleStub extends React.Component{
             //         alt={`stub ID ${this.props.id}`}
             //     />
             //
-            //     <img className="icon-move-object" src="/img/move-object.svg" alt= "icon move object"/>
+            //     <DragIcon >
             //
             //     {/* <AddIcon
             //         showUploader={this.props.howUploader}
