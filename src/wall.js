@@ -113,22 +113,26 @@ export class Wall extends React.Component{
     }
 
     handleDrag(e, ui) {
-        const {x, y} = this.state.deltaPosition;
-        this.setState({
-            deltaPosition: {
-                x: x + ui.deltaX,
-                y: y + ui.deltaY,
-            }
-        });
+        console.log("fn handleDrag");
+        // const {x, y} = this.state.deltaPosition;
+        // this.setState({
+        //     deltaPosition: {
+        //         x: x + ui.deltaX,
+        //         y: y + ui.deltaY,
+        //     }
+        // });
+        // console.log(x, y);
     }
 
     onStart() {
+        console.log("fn onStart");
         this.setState({
             activeDrags: ++this.state.activeDrags
         });
     }
 
     onStop() {
+        console.log("fn onStop");
         this.setState({
             activeDrags: --this.state.activeDrags
         });
@@ -151,7 +155,9 @@ export class Wall extends React.Component{
         };
 
         const {dispatch, stubs} = this.props;
-        const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+        const dragHandlers = {
+            onStart: this.onStart,
+            onStop: this.onStop};
         const {deltaPosition} = this.state;
 
         const renderTicketStubs = () => {
@@ -169,7 +175,7 @@ export class Wall extends React.Component{
 
 
                     <Draggable bounds="parent" handle=".cursor"
-                        // onDrag={this.handleDrag}
+                        onDrag={this.handleDrag}
                         {...dragHandlers}>
                         <div
                             className="box no-cursor"
