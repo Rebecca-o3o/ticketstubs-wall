@@ -12,8 +12,13 @@ export class StubsMenu extends React.Component {
         return (
 
             <Menu
-                customBurgerIcon={ <img id="hamburgermenu" src="/img/hamburgermenu.svg" /> }
-                customCrossIcon={ <img id="closemenu" src="/img/close.svg" /> }
+                customBurgerIcon={ <img
+                    id="hamburgermenu"
+                    src="/img/hamburgermenu.svg" /> }
+                customCrossIcon={ <img
+                    id="closemenu"
+                    src="/img/close.svg" /> }
+                burgerButtonClassName={ "my-class" }
             >
                 <Link to="/">Home</Link>
                 <Link to="/wall/:userid">My Wall</Link>

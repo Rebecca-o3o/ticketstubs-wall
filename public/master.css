@@ -138,9 +138,8 @@ p {
     margin-right: 10px;
 }
 
-.menue {
-    display: inline-flex;
-}
+
+/*===== Menue Hamburger Navigation===== */
 
 #hamburgermenu {
     max-height: 30px;
@@ -150,6 +149,40 @@ p {
 
 #closemenu  {
     max-height: 30px;
+}
+
+.bm-burger-button {
+    /*position: fixed;*/
+    /*width: 36px;
+    height: 30px;*/
+    /*left: 36px;
+    top: 36px;*/
+    max-height: 30px;
+    /*margin: 5px;*/
+}
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+    max-height: 30px;
+}
+
+.bm-menu {
+    background-color: rgb(041, 041, 041);
+    /*padding: 2.5em 1.5em 0;*/
+    font-size: 1.15em;
+}
+
+.bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+    font-size: 20px;
+}
+
+.bm-item-list > a{
+    padding-top: 10px;
+    color: rgb(226, 0, 115);
+    text-decoration: none;
 }
 
 
