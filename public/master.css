@@ -225,6 +225,30 @@ p {
     cursor: pointer;
 }
 
+/*===== Modal ===== */
+
+.modal {
+    background-color: rgb(154, 154, 154);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 100;
+    height: 200px;
+    max-height: 100%;
+    width: 1000px;
+    max-width: 100%;
+    /*display: flex;
+    justify-content: center;*/
+}
+
+.modal > div > input {
+    max-width: 90%;
+    font-size: 16px;
+}
+
+
 /*===== React Dragable styles ===== */
 
 .react-draggable {
