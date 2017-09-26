@@ -10,7 +10,17 @@ const uidSafe = require('uid-safe');
 
 //own modules
 const {s3Url} = require('./config.json');
-const secret = require('./secrets');
+
+
+let secret;
+
+if (process.env.NODE_ENV == 'production') {
+    secret = process.env;
+} else {
+    secret = require('./secrets');
+}
+
+
 const db = require('./database');
 
 // ===== Middlewares ===== //
@@ -44,12 +54,13 @@ app.use(express.static('./public'));
 
 
 // ===== S3 upload ===== start ===== //
-let secrets;
+
 if (process.env.NODE_ENV == 'production') {
     secrets = process.env;
 } else {
     secrets = require('./secrets');
 }
+
 //create S3 client
 const client = knox.createClient({
     key: secret.AWS_KEY,
