@@ -6,7 +6,7 @@ import Draggable from 'react-draggable';
 import {DraggableCore} from 'react-draggable';
 
 import axios from './axios';
-import {Menu} from './menu';
+import {StubsMenu} from './stubs-menu';
 import {Footer} from './footer';
 import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
@@ -227,7 +227,7 @@ export class Wall extends React.Component{
             <div>
 
                 <header>
-                    <Menu />
+                    <StubsMenu />
                 </header>
 
                 <div className="ticketstubs-wall-container">

@@ -1,6 +1,6 @@
 import React from 'react';
 // import {Link} from 'react-router';
-import {Menu} from './menu';
+import {StubsMenu} from './stubs-menu';
 import {Footer} from './footer';
 
 
@@ -24,7 +24,7 @@ export class Welcome extends React.Component{
             <div>
 
                 <header>
-                    <Menu />
+                    <StubsMenu />
                 </header>
 
                 <div className="welcome-background">

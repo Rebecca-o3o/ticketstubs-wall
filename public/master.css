@@ -142,9 +142,15 @@ p {
     display: inline-flex;
 }
 
-/*#hamburgermenu {
-height: 50px;
-}*/
+#hamburgermenu {
+    max-height: 30px;
+    margin: 5px;
+}
+
+
+#closemenu  {
+    max-height: 30px;
+}
 
 
 /*===== Ticket Stubs Wall ===== */
