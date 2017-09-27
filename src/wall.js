@@ -11,8 +11,8 @@ import {CommentsMenu} from './wall-comments';
 import {Footer} from './footer';
 import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
-import {loadTicketstubs} from './actions';
-import {DragIcon, EditIcon} from './stub-action-icons';
+import {loadTicketstubs, saveStubPosition} from './actions';
+import {BlankTicketIcons, UploadedTicketIcons} from './stub-action-icons';
 
 
 //===== components =====//
@@ -27,10 +27,10 @@ export class Wall extends React.Component{
                 x: 0,
                 y: 0
             },
-            controlledPosition: {
-                x: -400,
-                y: 200
-            }
+            // controlledPosition: {
+            //     x: -400,
+            //     y: 200
+            // }
         };
 
         this.showUploader = this.showUploader.bind(this);
@@ -113,7 +113,7 @@ export class Wall extends React.Component{
     //The ui parameter is typically a hash; its properties depend on the event being raised.
     //on movement ui will contain the current position and offset
     handleDrag(e, ui) {
-        console.log("fn handleDrag");
+        // console.log("fn handleDrag");
 
         const {x, y} = this.state.deltaPosition;
         this.setState({
@@ -122,7 +122,7 @@ export class Wall extends React.Component{
                 y: y + ui.deltaY
             }
         });
-        console.log(this.state.deltaPosition);
+        // console.log(this.state.deltaPosition);
 
     }
 
@@ -133,9 +133,14 @@ export class Wall extends React.Component{
     }
 
     onStop() {
+    // onStop() {
         this.setState({
             activeDrags: --this.state.activeDrags
         });
+        // console.log("moved stubs id:", id);
+        // console.log("stoped moved stubs by xy:", this.state.deltaPosition);
+        // console.log("stoped moved stubs by xy:", this.propsid);
+
     }
 
 
@@ -158,7 +163,8 @@ export class Wall extends React.Component{
         const dragHandlers = {
             onStart: this.onStart,
             onStop: this.onStop};
-        const {deltaPosition, controlledPosition} = this.state;
+
+        // const {deltaPosition, controlledPosition} = this.state;
 
         const renderTicketStubs = () => {
 
@@ -170,29 +176,36 @@ export class Wall extends React.Component{
                 // console.log("fn: stubs.map - stubImgUrl:", singleStub.stubImgUrl);
 
                 const imageUrl = singleStub.stubImgUrl;
+                // console.log("this is our id", singleStub.id);
 
                 return (
 
 
-                    <Draggable bounds="parent" handle=".cursor"
+                    <Draggable
+                        bounds="parent"
+                        handle=".cursor"
                         onDrag={this.handleDrag}
-                        {...dragHandlers}>
+                        onStart={this.onStart}
+                        onStop={this.onStop}
+                        id={singleStub.id}
+                        // onStop={this.onStop(singleStub.id)}
+                        // {...dragHandlers}
+                    >
+
                         <div
                             className="box no-cursor"
                             style={{ backgroundImage: `url(${imageUrl})` }}
                             // style={{ content: `url(${imageUrl})` }}
                             // style={{backgroundColor: randomColor()}}
                         >
-                            <DragIcon
-                                onDrag={this.handleDrag}
+                            <UploadedTicketIcons
                                 hideUploader={this.hideUploader}
+                                id={singleStub.id}
                             />
-                            {/* <div>You must click my handle to drag me</div> */}
-                            {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
                         </div>
                     </Draggable>
 
-                    // 
+                    //
                     // <Draggable bounds="parent" handle=".cursor" {...dragHandlers}>
                     //     <div
                     //         className="box no-cursor"
@@ -254,12 +267,15 @@ export class Wall extends React.Component{
                         {...dragHandlers}>
 
                         <div className="box no-cursor" style={{backgroundColor: randomColor()}}>
-                            <DragIcon />
-                            <AddIcon
-                                showUploader={this.showUploader}
-                            />
-                            <div>Add a new stub here!</div>
-                            {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
+                            <BlankTicketIcons />
+                            <div>
+                                <AddIcon
+                                    showUploader={this.showUploader}
+                                />
+                                <div>Add a new stub to your wall by cklicking on the add icon!</div>
+                                {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
+
+                            </div>
                         </div>
                     </Draggable>
 
