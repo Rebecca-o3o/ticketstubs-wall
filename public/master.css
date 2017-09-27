@@ -152,13 +152,13 @@ p {
 }
 
 .bm-burger-button {
-    /*position: fixed;*/
-    /*width: 36px;
-    height: 30px;*/
-    /*left: 36px;
-    top: 36px;*/
+    position: fixed;
+    width: 25px;
+    left: 5px;
     max-height: 30px;
     /*margin: 5px;*/
+
+
 }
 
 .bm-cross-button {
