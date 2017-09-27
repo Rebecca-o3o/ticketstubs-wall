@@ -7,6 +7,7 @@ import {DraggableCore} from 'react-draggable';
 
 import axios from './axios';
 import {StubsMenu} from './stubs-menu';
+import {CommentsMenu} from './wall-comments';
 import {Footer} from './footer';
 import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
@@ -20,7 +21,16 @@ export class Wall extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            showUploaderWindow: false
+            showUploaderWindow: false,
+            activeDrags: 0,
+            deltaPosition: {
+                x: 0,
+                y: 0
+            },
+            controlledPosition: {
+                x: -400,
+                y: 200
+            }
         };
 
         this.showUploader = this.showUploader.bind(this);
@@ -29,7 +39,6 @@ export class Wall extends React.Component{
         this.handleFileChange = this.handleFileChange.bind(this);
         this.submitTicketStub = this.submitTicketStub.bind(this);
 
-        this.getInitialState = this.getInitialState.bind(this);
         this.handleDrag = this.handleDrag.bind(this);
         this.onStart = this.onStart.bind(this);
         this.onStop = this.onStop.bind(this);
@@ -91,6 +100,7 @@ export class Wall extends React.Component{
                 // TODO: immediatly display stub here
                 showUploaderWindow: false
             });
+            location.replace("/");
         }).catch((err)=>{
             this.setState({
                 error: 'Ups! Something went wrong! Please try again!'
@@ -100,39 +110,29 @@ export class Wall extends React.Component{
     }
 
 
-    getInitialState() {
-        return {
-            activeDrags: 0,
-            deltaPosition: {
-                x: 0, y: 0
-            },
-            controlledPosition: {
-                x: -400, y: 200
-            }
-        };
-    }
-
+    //The ui parameter is typically a hash; its properties depend on the event being raised.
+    //on movement ui will contain the current position and offset
     handleDrag(e, ui) {
         console.log("fn handleDrag");
-        // const {x, y} = this.state.deltaPosition;
-        // this.setState({
-        //     deltaPosition: {
-        //         x: x + ui.deltaX,
-        //         y: y + ui.deltaY,
-        //     }
-        // });
-        // console.log(x, y);
+
+        const {x, y} = this.state.deltaPosition;
+        this.setState({
+            deltaPosition: {
+                x: x + ui.deltaX,
+                y: y + ui.deltaY
+            }
+        });
+        console.log(this.state.deltaPosition);
+
     }
 
     onStart() {
-        console.log("fn onStart");
         this.setState({
             activeDrags: ++this.state.activeDrags
         });
     }
 
     onStop() {
-        console.log("fn onStop");
         this.setState({
             activeDrags: --this.state.activeDrags
         });
@@ -158,7 +158,7 @@ export class Wall extends React.Component{
         const dragHandlers = {
             onStart: this.onStart,
             onStop: this.onStop};
-        const {deltaPosition} = this.state;
+        const {deltaPosition, controlledPosition} = this.state;
 
         const renderTicketStubs = () => {
 
@@ -183,22 +183,17 @@ export class Wall extends React.Component{
                             // style={{ content: `url(${imageUrl})` }}
                             // style={{backgroundColor: randomColor()}}
                         >
-                            <DragIcon />
+                            <DragIcon
+                                onDrag={this.handleDrag}
+                                hideUploader={this.hideUploader}
+                            />
                             {/* <div>You must click my handle to drag me</div> */}
                             {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
                         </div>
                     </Draggable>
 
-
-                    // <Draggable onDrag={this.handleDrag} {...dragHandlers}>
-                    //     <div className="box">
-                    //         <div>I track my deltas</div>
-                    //         <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div>
-                    //     </div>
-                    // </Draggable>
-
-
-                    //{/* <Draggable bounds="parent" handle=".cursor" {...dragHandlers}>
+                    // 
+                    // <Draggable bounds="parent" handle=".cursor" {...dragHandlers}>
                     //     <div
                     //         className="box no-cursor"
                     //         className="box"
@@ -220,8 +215,7 @@ export class Wall extends React.Component{
                     //             hideUploader={this.hideUploader}
                     //         />
                     //     </div>
-                    // </Draggable> */}
-
+                    // </Draggable>
 
                 );
             });
@@ -236,6 +230,7 @@ export class Wall extends React.Component{
                     <StubsMenu
                         showUploader={this.showUploader}
                     />
+                    {/* <CommentsMenu /> */}
                 </header>
 
                 <div className="ticketstubs-wall-container">
@@ -252,9 +247,12 @@ export class Wall extends React.Component{
                         hideUploader={this.hideUploader}/>}
 
 
-                    <Draggable bounds="parent" handle=".cursor"
-                        // onDrag={this.handleDrag}
+                    <Draggable
+                        bounds="parent"
+                        handle=".cursor"
+                        onDrag={this.handleDrag}
                         {...dragHandlers}>
+
                         <div className="box no-cursor" style={{backgroundColor: randomColor()}}>
                             <DragIcon />
                             <AddIcon
@@ -264,6 +262,7 @@ export class Wall extends React.Component{
                             {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
                         </div>
                     </Draggable>
+
 
                 </div>
 
