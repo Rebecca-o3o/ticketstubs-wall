@@ -222,27 +222,31 @@ export class Wall extends React.Component{
                     //     onMouseEnter={this.onMouseEnter}
                     // >
 
-                        <Draggable
-                            bounds="parent"
-                            handle=".cursor"
-                            onDrag={this.handleDrag}
-                            id={singleStub.id}
-                            {...dragHandlers}
+                    <Draggable
+                        bounds="parent"
+                        handle=".cursor"
+                        onDrag={this.handleDrag}
+                        id={singleStub.id}
+                        {...dragHandlers}
 
-                        >
+                    >
 
-                            <div
-                                className="box no-cursor"
-                                style={{ backgroundImage: `url(${imageUrl})` }}>
+                        <div
+                            className="box no-cursor"
+                            style={{ backgroundImage: `url(${imageUrl})` }}>
 
-                                {/* {this.state.hover &&  */}
-                                    <UploadedTicketIcons
-                                    id={singleStub.id}
-                                />
-                            {/* } */}
+                            {/* {this.state.hover &&  */}
+                                <UploadedTicketIcons
+                                id={singleStub.id}
+                                event={singleStub.eventname}
+                                date={singleStub.eventdate}
+                                time={singleStub.eventtime}
+                                venue={singleStub.venue}
+                            />
+                        {/* } */}
 
-                            </div>
-                        </Draggable>
+                        </div>
+                    </Draggable>
                     // </div>
                 );
             });

@@ -33,20 +33,21 @@ export class EditIcon extends React.Component{
 
 
     showEventEditor(){
-        console.log("klick und showEventEditor aktiviert");
+        // console.log("klick und showEventEditor aktiviert");
         this.setState({
             showEventEditor: true
         });
     }
 
     closeEventEditor(){
-        console.log("klick und closeEventEditor aktiviert");
+        // console.log("klick und closeEventEditor aktiviert");
         this.setState({
             showEventEditor: false
         });
     }
 
     render() {
+        console.log("render EditIcon Comp with this.props:", this.props);
 
         var editIcon = <img
             className="icon-edit-ticketstub"
@@ -62,7 +63,11 @@ export class EditIcon extends React.Component{
                 {this.state.showEventEditor && <EditTicketStubDetails
                     showEventEditor={this.showEventEditor}
                     closeEventEditor={this.closeEventEditor}
-                    id={this.props.id}/>}
+                    id={this.props.id}
+                    event={this.props.event}
+                    date={this.props.date}
+                    time={this.props.time}
+                    venue={this.props.venue}/>}
             </div>
 
         );
@@ -82,14 +87,14 @@ export class MoreIcon extends React.Component{
 
 
     showMoreMenu(){
-        console.log("klick und showMoreMenu aktiviert");
+        // console.log("klick und showMoreMenu aktiviert");
         this.setState({
             showMoreMenu: true
         });
     }
 
     closeMoreMenu(){
-        console.log("klick und closeMoreMenu aktiviert");
+        // console.log("klick und closeMoreMenu aktiviert");
         this.setState({
             showMoreMenu: false
         });
@@ -123,14 +128,24 @@ export class MoreIcon extends React.Component{
 export class UploadedTicketIcons extends React.Component{
     constructor (props) {
         super(props);
+        this.state = {
+            hover: true,
+        };
     }
+
     render() {
-        // console.log("render UploadedTicketIcons Comp with this.props:", this.props);
+        console.log("render UploadedTicketIcons Comp with this.props:", this.props);
         return (
 
-            <div>
+            <div
+                onClick={this.props.closeMoreMenu}>
                 <DragIcon />
-                <EditIcon id={this.props.id}/>
+                <EditIcon
+                    id={this.props.id}
+                    event={this.props.event}
+                    date={this.props.date}
+                    time={this.props.time}
+                    venue={this.props.venue}/>
                 <MoreIcon id={this.props.id}/>
             </div>
 

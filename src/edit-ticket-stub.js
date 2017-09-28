@@ -51,15 +51,15 @@ export class EditTicketStubDetails extends React.Component{
                 </div>
 
                 <div className="inner-stub-editor">
-                    <input type="text" name="event" placeholder="Event" onChange={this.props.handleInputChange} />
+                    <input type="text" name="event" placeholder={`${this.props.event}`} onChange={this.props.handleInputChange} />
                 </div>
 
                 <div>
-                    <input type="text" name="date" placeholder="Date" onChange={this.props.handleInputChange} />
-                    <input type="text" name="time" placeholder="Time" onChange={this.props.handleInputChange} />
+                    <input type="text" name="date" placeholder={`${this.props.date}`} onChange={this.props.handleInputChange} />
+                    <input type="text" name="time" placeholder={`${this.props.time}`} onChange={this.props.handleInputChange} />
                 </div>
                 <div>
-                    <input type="text" name="venue" placeholder="Venue" onChange={this.props.handleInputChange} />
+                    <input type="text" name="venue" placeholder={`${this.props.venue}`} onChange={this.props.handleInputChange} />
                 </div>
 
                 <div>
