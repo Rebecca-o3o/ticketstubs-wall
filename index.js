@@ -133,12 +133,12 @@ function uploadToS3(req, res) {
 
 app.get('/', function(req, res){
     // console.log("Route / - session User:", req.session.user);
-    if(req.session.user){
+    // if(req.session.user){
         res.sendFile(__dirname + '/index.html');
-    }
-    else {
-        return res.redirect('/welcome/');
-    }
+    // }
+    // else {
+    //     return res.redirect('/welcome/');
+    // }
 });
 
 app.get('/welcome/', function(req, res){
