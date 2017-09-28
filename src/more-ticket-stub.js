@@ -1,8 +1,8 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-// import { connect } from 'react-redux';
+
 import axios from './axios';
-// import {loadTicketstubs} from './actions';
+
 
 
 
@@ -17,7 +17,7 @@ export class MoreStubActions extends React.Component{
 
     delete(){
         // console.log("about to delete id:", this.props.id);
-        console.log("this.props", this.props);
+        // console.log("this.props", this.props);
 
         var stubId = this.props.id;
         axios.post('/api/delete', {stubId}).then((res) => {
@@ -38,7 +38,7 @@ export class MoreStubActions extends React.Component{
 
 
     render() {
-        console.log("render MoreStubActions Comp with this.props:", this.props);
+        // console.log("render MoreStubActions Comp with this.props:", this.props);
 
         var deleteButton = <button
             onClick={this.delete}
@@ -60,13 +60,3 @@ export class MoreStubActions extends React.Component{
         );
     }
 }
-//
-//
-// function mapStateToProps(state){
-//
-//     return {
-//         stubs: state.stubs
-//     };
-// }
-//
-// export default connect(mapStateToProps)(MoreStubActions);

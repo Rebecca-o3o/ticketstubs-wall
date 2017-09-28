@@ -11,7 +11,7 @@ export function loadTicketstubs(){
 
     return axios.get(url).then((serverResponse) => {
 
-        console.log(serverResponse.data);
+        // console.log(serverResponse.data);
 
         return {
             type: 'LOAD_TICKET_STUBS',

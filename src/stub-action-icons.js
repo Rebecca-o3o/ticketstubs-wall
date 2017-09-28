@@ -47,7 +47,7 @@ export class EditIcon extends React.Component{
     }
 
     render() {
-        console.log("render EditIcon Comp with this.props:", this.props);
+        // console.log("render EditIcon Comp with this.props:", this.props);
 
         var editIcon = <img
             className="icon-edit-ticketstub"
@@ -134,7 +134,7 @@ export class UploadedTicketIcons extends React.Component{
     }
 
     render() {
-        console.log("render UploadedTicketIcons Comp with this.props:", this.props);
+        // console.log("render UploadedTicketIcons Comp with this.props:", this.props);
         return (
 
             <div
