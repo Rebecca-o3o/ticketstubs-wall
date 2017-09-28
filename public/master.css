@@ -77,7 +77,7 @@ footer {
 
 header {
     background-color: rgb(0,0,0);
-    padding: 5px 5px 5px 7px;
+    /*padding: 5px 5px 5px 7px;*/
     height: 50px;
     width:100%;
     top:0px;
@@ -155,9 +155,8 @@ p {
 
 #hamburgermenu {
     max-height: 30px;
-    margin: 5px;
+    margin: 10px;
 }
-
 
 #closemenu  {
     max-height: 30px;
@@ -165,10 +164,10 @@ p {
 
 .bm-burger-button {
     position: fixed;
-    width: 25px;
-    left: 5px;
+    width: 40px;
+    /*left: 5px;*/
     max-height: 30px;
-    /*margin: 5px;*/
+    /*margin: 10px;*/
 }
 
 .bm-cross-button {
