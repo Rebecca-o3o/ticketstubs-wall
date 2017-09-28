@@ -285,14 +285,17 @@ app.get('/api/logout', (req, res) => {
 
 app.get('*', function(req, res) {
     // console.log("Route * - session User:", req.session.user);
-    if(req.session.user){
-        res.sendFile(__dirname + '/index.html');
-    }
-    else {
-        return res.redirect('/welcome/');
-    }
+    // if(req.session.user){
+    //     res.sendFile(__dirname + '/index.html');
+    // }
+    // else {
+        return res.redirect('/');
+    // }
 });
 
 // ===== Server ===== //
 
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 8080;
+app.listen(port, function(){
+    console.log(`Server listening on port ${port}`);
+});
