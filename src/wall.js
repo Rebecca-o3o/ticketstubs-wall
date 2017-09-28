@@ -7,7 +7,7 @@ import {DraggableCore} from 'react-draggable';
 
 import axios from './axios';
 import {StubsMenu} from './stubs-menu';
-import {CommentsMenu} from './wall-comments';
+// import {CommentsMenu} from './wall-comments';
 import {Footer} from './footer';
 import SingleStub from './single-stub';
 import {AddIcon, UploadTicketStub} from './upload-ticket-stub';
