@@ -110,7 +110,7 @@ function uploadToS3(req, res) {
             success: wasSuccessful
         });
         if(wasSuccessful) {
-
+            console.log (req.session.user.id);
             db.addTicketStub(
                 req.file.filename,
                 req.session.user.id,
@@ -156,11 +156,17 @@ app.post('/register', function (req, res){
     db.hashPassword(req.body.password).then((hash)=>{
         var queryValues = [req.body.first, req.body.last, req.body.email, hash];
         return db.addUser(queryValues).then((result)=>{
-            // console.log("logging result");
-            // console.log(result.rows);
-            // req.session.user.id = result.rows[0].id;
-            // req.session.user.id = result;
+
             req.session.user = result.rows;
+
+            req.session.user = {
+                id: result.rows[0].id,
+                // first: result.rows[0].first,
+                // last: result.rows[0].last,
+            };
+
+            console.log("successfully registered req.session.user:",  req.session.user);
+
             res.json({
                 success: true
             });
