@@ -22,6 +22,8 @@ export class Wall extends React.Component{
         super(props);
         this.state = {
             showUploaderWindow: false,
+            selected: "",
+            hover: "",
             activeDrags: 0,
             deltaPosition: {
                 x: 0,
@@ -42,6 +44,10 @@ export class Wall extends React.Component{
         this.handleDrag = this.handleDrag.bind(this);
         this.onStart = this.onStart.bind(this);
         this.onStop = this.onStop.bind(this);
+
+        this.getHoverState = this.getHoverState.bind(this);
+        this.onHover = this.onHover.bind(this);
+        this.onMouseOut = this.onMouseOut.bind(this);
     }
 
     componentDidMount(){
@@ -110,6 +116,29 @@ export class Wall extends React.Component{
     }
 
 
+    getHoverState(id) {
+        console.log("getHoverState out about to set state");
+        if (this.state.hover === id) {
+            return "hovered";
+        }
+        return "";
+    }
+
+    onHover(id) {
+        console.log("onhover about to set state");
+        this.setState({
+            hover: id
+        });
+    }
+
+    onMouseOut() {
+        console.log("mouse out about to set state");
+        this.setState({
+            hover: ""
+        });
+    }
+
+
     //The ui parameter is typically a hash; its properties depend on the event being raised.
     //on movement ui will contain the current position and offset
     handleDrag(e, ui) {
@@ -133,7 +162,6 @@ export class Wall extends React.Component{
     }
 
     onStop() {
-    // onStop() {
         this.setState({
             activeDrags: --this.state.activeDrags
         });
@@ -180,56 +208,30 @@ export class Wall extends React.Component{
 
                 return (
 
+                    <div
+                        hoverState={this.getHoverState(singleStub.id)}
+                        onHover={this.onHover}
+                        onMouseOut={this.onMouseOut}>
 
-                    <Draggable
-                        bounds="parent"
-                        handle=".cursor"
-                        onDrag={this.handleDrag}
-                        onStart={this.onStart}
-                        onStop={this.onStop}
-                        id={singleStub.id}
-                        // onStop={this.onStop(singleStub.id)}
-                        // {...dragHandlers}
-                    >
+                        <Draggable
+                            bounds="parent"
+                            handle=".cursor"
+                            onDrag={this.handleDrag}
+                            id={singleStub.id}
+                            {...dragHandlers}>
 
-                        <div
-                            className="box no-cursor"
-                            style={{ backgroundImage: `url(${imageUrl})` }}
-                            // style={{ content: `url(${imageUrl})` }}
-                            // style={{backgroundColor: randomColor()}}
-                        >
-                            <UploadedTicketIcons
-                                hideUploader={this.hideUploader}
-                                id={singleStub.id}
-                            />
-                        </div>
-                    </Draggable>
+                            <div
+                                className="box no-cursor"
+                                style={{ backgroundImage: `url(${imageUrl})` }}>
 
-                    //
-                    // <Draggable bounds="parent" handle=".cursor" {...dragHandlers}>
-                    //     <div
-                    //         className="box no-cursor"
-                    //         className="box"
-                    //     >
-                    //
-                    //         <SingleStub
-                    //             id={singleStub.id}
-                    //             stubImgSrc={singleStub.stubImgUrl}
-                    //             stubEvent={singleStub.eventname}
-                    //             stubDate={singleStub.eventdate}
-                    //             stubTime={singleStub.eventtime}
-                    //             stubVenue={singleStub.eventvenue}
-                    //
-                    //             showUploader={this.showUploader}
-                    //             handleInputChange = {(e) => this.handleInputChange(e)}
-                    //             handleFileChange = {(e) => this.handleFileChange(e)}
-                    //             submitTicketStub={this.submitTicketStub}
-                    //             showUploader={this.showUploader}
-                    //             hideUploader={this.hideUploader}
-                    //         />
-                    //     </div>
-                    // </Draggable>
+                                <UploadedTicketIcons
+                                    hideUploader={this.hideUploader}
+                                    id={singleStub.id}
+                                />
 
+                            </div>
+                        </Draggable>
+                    </div>
                 );
             });
         };
@@ -266,13 +268,16 @@ export class Wall extends React.Component{
                         onDrag={this.handleDrag}
                         {...dragHandlers}>
 
-                        <div className="box no-cursor" style={{backgroundColor: randomColor()}}>
+                        <div className="box no-cursor" style={{
+                            // backgroundColor: randomColor()
+                            backgroundColor: 'rgb(240, 240, 240)'
+                        }}>
                             <BlankTicketIcons />
                             <div>
                                 <AddIcon
                                     showUploader={this.showUploader}
                                 />
-                                <div>Add a new stub to your wall by cklicking on the add icon!</div>
+                                <div>Add a new stub to your wall by clicking on the add icon!</div>
                                 {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
 
                             </div>
