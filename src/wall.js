@@ -48,6 +48,7 @@ export class Wall extends React.Component{
         this.getHoverState = this.getHoverState.bind(this);
         this.onHover = this.onHover.bind(this);
         this.onMouseOut = this.onMouseOut.bind(this);
+        this.onMouseEnter = this.onMouseEnter.bind(this);
     }
 
     componentDidMount(){
@@ -116,25 +117,32 @@ export class Wall extends React.Component{
     }
 
 
-    getHoverState(id) {
-        console.log("getHoverState out about to set state");
-        if (this.state.hover === id) {
-            return "hovered";
+    getHoverState() {
+        console.log("getHoverState");
+        if (this.state.hover) {
+            return true;
         }
-        return "";
+        return false;
     }
 
-    onHover(id) {
+    onHover() {
         console.log("onhover about to set state");
         this.setState({
-            hover: id
+            hover: true
+        });
+    }
+
+    onMouseEnter() {
+        console.log("onMouseEnter about to set state");
+        this.setState({
+            hover: true
         });
     }
 
     onMouseOut() {
         console.log("mouse out about to set state");
         this.setState({
-            hover: ""
+            hover: false
         });
     }
 
@@ -208,30 +216,34 @@ export class Wall extends React.Component{
 
                 return (
 
-                    <div
-                        hoverState={this.getHoverState(singleStub.id)}
-                        onHover={this.onHover}
-                        onMouseOut={this.onMouseOut}>
+                    // <div
+                    //     onHover={this.onHover}
+                    //     onMouseOut={this.onMouseOut}
+                    //     onMouseEnter={this.onMouseEnter}
+                    // >
 
                         <Draggable
                             bounds="parent"
                             handle=".cursor"
                             onDrag={this.handleDrag}
                             id={singleStub.id}
-                            {...dragHandlers}>
+                            {...dragHandlers}
+
+                        >
 
                             <div
                                 className="box no-cursor"
                                 style={{ backgroundImage: `url(${imageUrl})` }}>
 
-                                <UploadedTicketIcons
-                                    hideUploader={this.hideUploader}
+                                {/* {this.state.hover &&  */}
+                                    <UploadedTicketIcons
                                     id={singleStub.id}
                                 />
+                            {/* } */}
 
                             </div>
                         </Draggable>
-                    </div>
+                    // </div>
                 );
             });
         };
