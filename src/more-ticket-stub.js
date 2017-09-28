@@ -25,7 +25,7 @@ export class MoreStubActions extends React.Component{
             this.setState({
                 showMoreMenu: false
             });
-            this.props.dispatch(loadTicketstubs());
+            location.replace("/");
         }).catch((err)=>{
             this.setState({
                 error: 'Ups! Something went wrong! Please try again!'
