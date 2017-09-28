@@ -18,6 +18,7 @@ export class EditTicketStubDetails extends React.Component{
             <div className="stub-action-overlay">
 
                 <div
+                    className="x-close"
                     onClick={this.props.hideUploader} >x
                 </div>
                 <div>

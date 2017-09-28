@@ -91,7 +91,7 @@ var uploader = multer({
 
 //upload to AWS
 function uploadToS3(req, res) {
-    console.log("fn. uploader to s3:", req.file.filename, req.body);
+    // console.log("fn. uploader to s3:", req.file.filename, req.body);
 
     const s3Request = client.put(req.file.filename, {
         'Content-Type': req.file.mimetype,
@@ -118,7 +118,10 @@ function uploadToS3(req, res) {
                 req.body.date,
                 req.body.time,
                 req.body.venue
-            );
+            ).then(()=>{
+                console.log("stub inserted to DB");
+
+            });
             // console.log("about to delete local file");
             fs.unlink(req.file.path);
         }
@@ -129,7 +132,7 @@ function uploadToS3(req, res) {
 // ===== Routes ===== //
 
 app.get('/', function(req, res){
-    console.log("Route / - session User:", req.session.user);
+    // console.log("Route / - session User:", req.session.user);
     if(req.session.user){
         res.sendFile(__dirname + '/index.html');
     }
@@ -139,7 +142,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/welcome/', function(req, res){
-    console.log("Route /welcome - session User:", req.session.user);
+    // console.log("Route /welcome - session User:", req.session.user);
     if(req.session.user){
         return res.redirect('/');
     }
@@ -191,7 +194,7 @@ app.post('/login', (req,res)=>{
 
                 };
 
-                console.log("success user is:", req.session.user);
+                // console.log("success user is:", req.session.user);
 
                 res.json({
                     success: true
@@ -224,11 +227,26 @@ app.post('/UploadTicketStub', uploader.single('file'), uploadToS3, function(req,
     }
 });
 
+app.post('/api/delete', function(req,res){
+    // console.log("about to delete REQ BODY:",req.body);
+
+    const userId = req.session.user.id;
+    const stubId = req.body.stubId;
+
+    db.deleteStub(stubId, userId).then(function(res){
+        // console.log(res);
+        // res.json(res);
+    }).catch(function(err){
+        console.log(err);
+    });
+});
+
+
 app.get('/api/getTicketstubs/:userid', function(req, res){
-    console.log("/api/getTicketstubs/:userid- session User:", req.session.user);
+    // console.log("/api/getTicketstubs/:userid- session User:", req.session.user);
     db.getStubsLists(req.session.user.id).then(function(stubs){
 
-        console.log(stubs);
+        // console.log(stubs);
         res.json(stubs);
 
     }).catch(function(err){
@@ -237,7 +255,7 @@ app.get('/api/getTicketstubs/:userid', function(req, res){
 });
 
 app.get('/api/logout', (req, res) => {
-    console.log("user has logged out / was:", req.session.user);
+    // console.log("user has logged out / was:", req.session.user);
     // req.session.user = null;
     req.session = null;
     return res.redirect('/welcome/');

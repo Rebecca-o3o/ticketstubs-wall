@@ -50,12 +50,21 @@ var getHashandUser = function (email){
 // ===== Ticket Stubs Logic ===== //
 var addTicketStub = function(file, user, event, date, time, venue){
 
-    const queryText = 'INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
+    const queryText = 'INSERT INTO userstubs (stub_img, stub_owner_id, event_name, event_date, event_time, venue) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, stub_img, stub_owner_id, event_name, event_date, event_time, venue';
 
-    console.log("starting db query store stub image");
+    // console.log("starting db query store stub image");
     return db.query(queryText, [file, user, event, date, time, venue]).then((result)=>{
         // console.log(result.rows[0]);
-        return result.rows[0];
+        // return result.rows[0];
+
+        return result.rows.map(stub=>{
+            const {id, img, eventname, eventdate, eventtime, venue} = stub;
+            return {
+                id, eventname, eventdate, eventtime, venue,
+                stubImgUrl: "https://s3.amazonaws.com/rkticketstubswall/" + img,
+            };
+        });
+
     }).catch((err)=>{
         console.log(err);
     });
@@ -78,6 +87,17 @@ var getStubsLists = function(userid){
     });
 };
 
+var deleteStub = function(stubId, user){
+
+    const queryText = `DELETE FROM userstubs WHERE id=$1 AND stub_owner_id=$2`;
+    console.log("starting db query deleteStub");
+
+    return db.query(queryText, [stubId, user]).then(()=>{
+    }).catch((err)=>{
+        console.log(err);
+    });
+};
+
 module.exports = {
     hashPassword,
     checkPassword,
@@ -85,4 +105,5 @@ module.exports = {
     getHashandUser,
     addTicketStub,
     getStubsLists,
+    deleteStub,
 };

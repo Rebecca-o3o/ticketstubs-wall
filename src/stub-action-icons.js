@@ -111,7 +111,8 @@ export class MoreIcon extends React.Component{
 
                 {this.state.showMoreMenu && <MoreStubActions
                     showMoreMenu={this.showMoreMenu}
-                    closeMoreMenu={this.closeMoreMenu}/>}
+                    closeMoreMenu={this.closeMoreMenu}
+                    id={this.props.id}/>}
 
             </div>
 
@@ -125,13 +126,13 @@ export class UploadedTicketIcons extends React.Component{
         super(props);
     }
     render() {
-
+        // console.log("render UploadedTicketIcons Comp with this.props:", this.props);
         return (
 
             <div>
                 <DragIcon />
-                <EditIcon />
-                <MoreIcon />
+                <EditIcon id={this.props.id}/>
+                <MoreIcon id={this.props.id}/>
             </div>
 
         );
