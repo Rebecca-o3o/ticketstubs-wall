@@ -234,7 +234,25 @@ app.post('/api/delete', function(req,res){
     const stubId = req.body.stubId;
 
     db.deleteStub(stubId, userId).then(function(result){
-        console.log(result);
+        // console.log(result);
+        res.json({
+            success: true
+        });
+    }).catch(function(err){
+        console.log(err);
+    });
+});
+
+app.post('/api/edit', function(req,res){
+    // console.log("about to edit REQ BODY:",req.body);
+
+    const userId = req.session.user.id;
+    var queryValues = [userId, req.body.id, req.body.event, req.body.date, req.body.time, req.body.venue];
+
+    // console.log("sending queryValues to DB", queryValues);
+
+    db.updateStub(userId, req.body.id, req.body.event, req.body.date, req.body.time, req.body.venue).then(function(result){
+        // console.log(result);
         res.json({
             success: true
         });

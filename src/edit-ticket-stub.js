@@ -12,18 +12,20 @@ export class EditTicketStubDetails extends React.Component{
             showEventEditor: true
         };
         this.submitChange = this.submitChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    // displayDetails(){
-    //
-    // }
-
     submitChange(){
-        // console.log("about to change id:", this.props.id);
-        console.log("this.props", this.props);
+        console.log("submitChange this.props", this.props);
 
-        var stubId = this.props.id;
-        axios.post('/api/edit', {stubId}).then((res) => {
+        // var [id, event, date, time, venue] = this.state;
+        axios.post('/api/edit', {
+            id: this.props.id,
+            event: this.state.event,
+            date: this.state.date,
+            time: this.state.time,
+            venue: this.state.venue
+        }).then((res) => {
             console.log(res);
             this.setState({
                 showEventEditor: false
@@ -37,9 +39,16 @@ export class EditTicketStubDetails extends React.Component{
         });
     }
 
+    handleClick(e){
+        // console.log("handleClick this.props", this.props);
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
 
     render() {
-        console.log("render EditTicketStubDetails Comp with this.props:", this.props);
+        // console.log("render EditTicketStubDetails Comp with this.props:", this.props);
 
         return (
 
@@ -51,20 +60,19 @@ export class EditTicketStubDetails extends React.Component{
                 </div>
 
                 <div className="inner-stub-editor">
-                    <input type="text" name="event" placeholder={`${this.props.event}`} onChange={this.props.handleInputChange} />
+                    <input type="text" name="event" placeholder={`${this.props.event}`} onChange={this.handleClick} />
                 </div>
 
                 <div>
-                    <input type="text" name="date" placeholder={`${this.props.date}`} onChange={this.props.handleInputChange} />
-                    <input type="text" name="time" placeholder={`${this.props.time}`} onChange={this.props.handleInputChange} />
+                    <input type="text" name="date" placeholder={`${this.props.date}`} onChange={this.handleClick} />
+                    <input type="text" name="time" placeholder={`${this.props.time}`} onChange={this.handleClick} />
                 </div>
                 <div>
-                    <input type="text" name="venue" placeholder={`${this.props.venue}`} onChange={this.props.handleInputChange} />
+                    <input type="text" name="venue" placeholder={`${this.props.venue}`} onChange={this.handleClick} />
                 </div>
 
                 <div>
-                    <button
-                        onClick={this.props.submitTicketStub} >Change</button>
+                    <button type="submit" name="submit" onClick={e => this.submitChange()}>Change</button>
                 </div>
 
             </div>

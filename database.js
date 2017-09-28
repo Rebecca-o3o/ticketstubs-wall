@@ -75,7 +75,7 @@ var getStubsLists = function(userid){
 
     return db.query(queryText,[userid]).then(function(dbStubs){
 
-        console.log(dbStubs);
+        // console.log(dbStubs);
 
         return dbStubs.rows.map(stub=>{
             const {id, img, eventname, eventdate, eventtime, venue} = stub;
@@ -90,7 +90,7 @@ var getStubsLists = function(userid){
 var deleteStub = function(stubId, user){
 
     const queryText = `DELETE FROM userstubs WHERE id=$1 AND stub_owner_id=$2`;
-    console.log("starting db query deleteStub");
+    // console.log("starting db query deleteStub");
 
     return db.query(queryText, [stubId, user]).then(()=>{
         return {
@@ -101,6 +101,20 @@ var deleteStub = function(stubId, user){
     });
 };
 
+var updateStub = function(userId, stubId, event, date, time, venue){
+
+    const queryText = `UPDATE userstubs SET event_name = $3, event_date = $4, event_time = $5, venue = $6 WHERE (stub_owner_id = ($1) AND id = ($2))`;
+
+    return db.query(queryText, [userId, stubId, event, date, time, venue]).then(()=>{
+        return {
+            status: "updated",
+        };
+    }).catch((err)=>{
+        console.log(err);
+    });
+};
+
+
 module.exports = {
     hashPassword,
     checkPassword,
@@ -109,4 +123,5 @@ module.exports = {
     addTicketStub,
     getStubsLists,
     deleteStub,
+    updateStub,
 };
