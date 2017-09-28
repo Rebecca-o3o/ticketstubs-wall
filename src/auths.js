@@ -4,31 +4,6 @@ import {Link} from 'react-router';
 import axios from './axios';
 
 
-
-//===== components =====//
-
-export class Welcome extends React.Component{
-    constructor (props) {
-        super(props);
-    }
-    render() {
-        // console.log("React Component - Welcome - this.props: ",this.props);
-        return (
-            <div>
-                <div style={welcomeStyle}>
-                    <div style={{backgroundColor: 'transparent'}}>
-                        <Logo />
-                        Willkommen in deiner Kleingärtner Community!
-                    </div>
-                </div>
-                <div  style={welcomeFormStyle}>
-                    {this.props.children}
-                </div>
-            </div>
-        );
-    }
-}
-
 export class Registration extends React.Component{
     constructor(props){
         super(props);
