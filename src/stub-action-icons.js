@@ -57,11 +57,12 @@ export class EditIcon extends React.Component{
 
         return (
             <div>
-
                 {editIcon}
+
                 {this.state.showEventEditor && <EditTicketStubDetails
                     showEventEditor={this.showEventEditor}
-                    closeEventEditor={this.closeEventEditor}/>}
+                    closeEventEditor={this.closeEventEditor}
+                    id={this.props.id}/>}
             </div>
 
         );
@@ -108,12 +109,10 @@ export class MoreIcon extends React.Component{
             <div>
                 {moreIcon}
 
-
                 {this.state.showMoreMenu && <MoreStubActions
                     showMoreMenu={this.showMoreMenu}
                     closeMoreMenu={this.closeMoreMenu}
                     id={this.props.id}/>}
-
             </div>
 
         );

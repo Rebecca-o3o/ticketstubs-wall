@@ -1,27 +1,56 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 // import { connect } from 'react-redux';
-// import axios from './axios';
+import axios from './axios';
 
 
 
 export class EditTicketStubDetails extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            showEventEditor: true
+        };
+        this.submitChange = this.submitChange.bind(this);
     }
 
+    // displayDetails(){
+    //
+    // }
+
+    submitChange(){
+        // console.log("about to change id:", this.props.id);
+        console.log("this.props", this.props);
+
+        var stubId = this.props.id;
+        axios.post('/api/edit', {stubId}).then((res) => {
+            console.log(res);
+            this.setState({
+                showEventEditor: false
+            });
+            location.replace("/");
+        }).catch((err)=>{
+            this.setState({
+                error: 'Ups! Something went wrong! Please try again!'
+            });
+            console.log(err);
+        });
+    }
+
+
     render() {
-        // console.log("React Component - UploadTicketStub - this.props: ", this.props);
+        console.log("render EditTicketStubDetails Comp with this.props:", this.props);
 
         return (
 
-            <div className="stub-action-overlay">
+            <div className="stub-edit-overlay">
 
                 <div
                     className="x-close"
-                    onClick={this.props.hideUploader} >x
+                    onClick={this.props.closeEventEditor} >x
                 </div>
-                <div>
+
+                <div className="inner-stub-editor">
                     <input type="text" name="event" placeholder="Event" onChange={this.props.handleInputChange} />
                 </div>
 
@@ -36,9 +65,6 @@ export class EditTicketStubDetails extends React.Component{
                 <div>
                     <button
                         onClick={this.props.submitTicketStub} >Change</button>
-                    <button
-                        onClick={this.props.hideUploader} >Cancel</button>
-
                 </div>
 
             </div>

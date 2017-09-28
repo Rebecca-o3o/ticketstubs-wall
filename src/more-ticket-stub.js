@@ -1,8 +1,8 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import axios from './axios';
-import {loadTicketstubs} from './actions';
+// import {loadTicketstubs} from './actions';
 
 
 
@@ -60,13 +60,13 @@ export class MoreStubActions extends React.Component{
         );
     }
 }
-
-
-function mapStateToProps(state){
-
-    return {
-        stubs: state.stubs
-    };
-}
-
-export default connect(mapStateToProps)(MoreStubActions);
+//
+//
+// function mapStateToProps(state){
+//
+//     return {
+//         stubs: state.stubs
+//     };
+// }
+//
+// export default connect(mapStateToProps)(MoreStubActions);
