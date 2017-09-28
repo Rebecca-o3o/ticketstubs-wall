@@ -93,6 +93,9 @@ var deleteStub = function(stubId, user){
     console.log("starting db query deleteStub");
 
     return db.query(queryText, [stubId, user]).then(()=>{
+        return {
+            status: "deleted",
+        };
     }).catch((err)=>{
         console.log(err);
     });

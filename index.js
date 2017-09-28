@@ -233,9 +233,11 @@ app.post('/api/delete', function(req,res){
     const userId = req.session.user.id;
     const stubId = req.body.stubId;
 
-    db.deleteStub(stubId, userId).then(function(res){
-        // console.log(res);
-        // res.json(res);
+    db.deleteStub(stubId, userId).then(function(result){
+        console.log(result);
+        res.json({
+            success: true
+        });
     }).catch(function(err){
         console.log(err);
     });
