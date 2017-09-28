@@ -6,7 +6,7 @@ export function loadTicketstubs(){
 
     // console.log("REDUX ACTION loadTicketstubs");
 
-    let url = '/api/getTicketstubs/1';
+    let url = '/api/getTicketstubs/:userid';
     // TODO path + userId;
 
     return axios.get(url).then((serverResponse) => {

@@ -262,9 +262,11 @@ app.post('/api/edit', function(req,res){
 });
 
 
-app.get('/api/getTicketstubs/:userid', function(req, res){
+app.get('/api/getTicketstubs/:id', function(req, res){
+    req.params.id = req.session.user.id;
+    console.log(req.params.id);
     // console.log("/api/getTicketstubs/:userid- session User:", req.session.user);
-    db.getStubsLists(req.session.user.id).then(function(stubs){
+    db.getStubsLists(req.params.id).then(function(stubs){
 
         // console.log(stubs);
         res.json(stubs);
