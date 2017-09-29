@@ -118,7 +118,7 @@ export class Wall extends React.Component{
 
 
     getHoverState() {
-        console.log("getHoverState");
+        // console.log("getHoverState");
         if (this.state.hover) {
             return true;
         }
@@ -126,21 +126,21 @@ export class Wall extends React.Component{
     }
 
     onHover() {
-        console.log("onhover about to set state");
+        // console.log("onhover about to set state");
         this.setState({
             hover: true
         });
     }
 
     onMouseEnter() {
-        console.log("onMouseEnter about to set state");
+        // console.log("onMouseEnter about to set state");
         this.setState({
             hover: true
         });
     }
 
     onMouseOut() {
-        console.log("mouse out about to set state");
+        // console.log("mouse out about to set state");
         this.setState({
             hover: false
         });

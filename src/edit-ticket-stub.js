@@ -16,7 +16,7 @@ export class EditTicketStubDetails extends React.Component{
     }
 
     submitChange(){
-        console.log("submitChange this.props", this.props);
+        // console.log("submitChange this.props", this.props);
 
         // var [id, event, date, time, venue] = this.state;
         axios.post('/api/edit', {

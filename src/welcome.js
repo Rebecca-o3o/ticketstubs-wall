@@ -15,7 +15,7 @@ export class Welcome extends React.Component{
     }
 
     openModal() {
-        console.log('openRegisterModal - this is:', this);
+        // console.log('openRegisterModal - this is:', this);
     }
 
     render() {

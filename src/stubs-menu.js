@@ -9,6 +9,7 @@ export class StubsMenu extends React.Component {
     }
 
     render() {
+        // console.log(this.props);
         return (
 
             <Menu
@@ -18,13 +19,16 @@ export class StubsMenu extends React.Component {
                 customCrossIcon={ <img
                     id="closemenu"
                     src="/img/close.svg" /> }
-                burgerButtonClassName={ "my-class" }
+                // burgerButtonClassName={ "my-class" }
             >
                 <Link to="/">Home</Link>
-                <Link to="/wall/:userid">My Wall</Link>
+                {/* <Link to="/wall/:userid">My Wall</Link> */}
                 <Link to="/events/:userid">My Eventlist</Link>
                 <a
                     onClick={ this.props.showUploader }
+                    style={{
+                        cursor: 'pointer'
+                    }}
                 >Add a new stub</a>
 
                 {/* <a id="home" className="menu-item" href="/">Home</a> */}

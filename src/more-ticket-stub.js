@@ -21,7 +21,7 @@ export class MoreStubActions extends React.Component{
 
         var stubId = this.props.id;
         axios.post('/api/delete', {stubId}).then((res) => {
-            console.log(res);
+            // console.log(res);
             this.setState({
                 showMoreMenu: false
             });
