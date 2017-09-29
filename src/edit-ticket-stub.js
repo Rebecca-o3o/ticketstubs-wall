@@ -62,17 +62,20 @@ export class EditTicketStubDetails extends React.Component{
                 <div className="inner-stub-editor">
                     <input type="text" name="event" placeholder={`${this.props.event}`} onChange={this.handleClick} />
                 </div>
-
-                <div>
-                    <input type="text" name="date" placeholder={`${this.props.date}`} onChange={this.handleClick} />
-                    <input type="text" name="time" placeholder={`${this.props.time}`} onChange={this.handleClick} />
-                </div>
                 <div>
                     <input type="text" name="venue" placeholder={`${this.props.venue}`} onChange={this.handleClick} />
                 </div>
 
                 <div>
-                    <button type="submit" name="submit" onClick={e => this.submitChange()}>Change</button>
+                    <input type="text" name="date" placeholder={`${this.props.date}`} onChange={this.handleClick} />
+                    <input type="text" name="time" placeholder={`${this.props.time}`} onChange={this.handleClick} />
+                </div>
+
+                <div>
+                    <button
+                        type="submit" name="submit" onClick={e => this.submitChange()}
+                        className="uploader-button"
+                        >Change</button>
                 </div>
 
             </div>

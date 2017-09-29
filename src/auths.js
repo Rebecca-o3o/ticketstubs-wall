@@ -43,7 +43,10 @@ export class Registration extends React.Component{
                     <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
                     <input type="password" name="password" placeholder="Password" onChange={this.handleClick} />
                     <div>
-                        <button type="submit" name="submit" onClick={e => this.submit()}>Register</button>
+                        <button
+                            type="submit" name="submit" onClick={e => this.submit()}
+                            className="auth-button"
+                            >Register</button>
                     </div>
                 </div>
                 <div>
@@ -89,7 +92,9 @@ export class Login extends React.Component{
                     <input type="email" name="email" placeholder="Email" onChange={this.handleClick} />
                     <input type="password" name="password" placeholder="Password" onChange={this.handleClick} />
                     <div>
-                        <button type="submit" name="submit" onClick={e => this.submit()}>Log in</button>
+                        <button type="submit" name="submit" onClick={e => this.submit()}
+                        className="auth-button"
+                        >Log in</button>
                     </div>
                 </div>
                 <div>
