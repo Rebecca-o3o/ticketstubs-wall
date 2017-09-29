@@ -54,28 +54,31 @@ export class Welcome extends React.Component{
                         <div className="horizontal-line">
                         </div>
 
-                        <ul className="welcome-features-list">
-                            <li>
-                                <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                Access your Ticket Stubs Wall wherever you are.
-                            </li>
-                            <li>
-                                <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                Keep your concert memories at one place.
-                            </li>
-                            <li>
-                                <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                Collect pictures, videos, and moments.
-                            </li>
-                            <li>
-                                <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                Share your greatest concerts memories!
-                            </li>
-                            <li>
-                                <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                Keep track of your concert history!
-                            </li>
-                        </ul>
+                        <div className="welcome-features-container">
+
+                            <ul className="welcome-features-list">
+                                <li>
+                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
+                                    Access your Ticket Stubs Wall wherever you are.
+                                </li>
+                                <li>
+                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
+                                    Keep your concert memories at one place.
+                                </li>
+                                <li>
+                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
+                                    Collect pictures, videos, and moments.
+                                </li>
+                                <li>
+                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
+                                    Share your greatest concerts memories!
+                                </li>
+                                <li>
+                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
+                                    Keep track of your concert history!
+                                </li>
+                            </ul>
+                        </div>
 
                         <div className="horizontal-line">
                         </div>
