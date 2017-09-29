@@ -11,12 +11,15 @@ export class AddIcon extends React.Component{
     render() {
 
         return (
-            <img
-                className="icon-add-ticketstub"
-                src="/img/add.svg"
-                alt= "icon add ticket stub"
-                onClick={this.props.showUploader}
-            />
+            <div className="add-explanation-container">
+                <img
+                    className="icon-add-ticketstub"
+                    src="/img/add.svg"
+                    alt= "icon add ticket stub"
+                    onClick={this.props.showUploader}
+                />
+                <div className="blank-text-explanation">Add a new stub to your wall by clicking on the add icon!</div>
+            </div>
         );
     }
 }

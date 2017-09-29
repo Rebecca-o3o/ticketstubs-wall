@@ -238,6 +238,14 @@ p {
 }
 
 
+.blank-text-explanation {
+    margin: 0 5px;
+}
+
+.add-explanation-container {
+    display: -webkit-inline-box;
+}
+
 /*===== Modal ===== */
 
 .modal {

@@ -293,7 +293,6 @@ export class Wall extends React.Component{
                                 <AddIcon
                                     showUploader={this.showUploader}
                                 />
-                                <div>Add a new stub to your wall by clicking on the add icon!</div>
                                 {/* <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div> */}
 
                             </div>
