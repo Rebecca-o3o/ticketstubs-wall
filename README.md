@@ -10,7 +10,7 @@ Hosted on [Heroku](https://ticketstubs-wall.herokuapp.com/)
 - Node.js
 - Express.js
 - PostgreSQL
-- AWS S3
+- AWS S3  for storing images
 
 
 ## Details
