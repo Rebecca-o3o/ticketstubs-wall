@@ -3,7 +3,7 @@
 ## Overview
 This project was firstly released within the final week at SPICED Academy and is targeted to users who like to collect their concerts or sports tickets.
 Users can upload pictures of their collected event tickets and view them on a pinwall-like page.
-Hosted on [Heroku](https://staging1-ticketwall.herokuapp.com/)
+Hosted on [Heroku](https://ticketwall.herokuapp.com/)
 
 ## Technologies
 - React.js
