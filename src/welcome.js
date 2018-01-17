@@ -33,11 +33,11 @@ export class Welcome extends React.Component{
                 </div>
 
                 <div className="welcome-section">
-                    <h1>Welcome to your Online Ticket Stubs Wall!</h1>
+                    <h1>Welcome to your online Ticketwall!</h1>
 
                     <div>
                         <p>
-                            Collecting ticket stubs from every concert you go to?
+                            Collecting tickets and stubs from every concert you go to?
                         </p>
                         <p>
                             Do you pin them to your wall, glue them in a book or are they just loose all around your place?
@@ -59,7 +59,7 @@ export class Welcome extends React.Component{
                             <ul className="welcome-features-list">
                                 <li>
                                     <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Access your Ticket Stubs Wall wherever you are.
+                                    Access your Ticketwall wherever you are.
                                 </li>
                                 <li>
                                     <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>

@@ -10,7 +10,7 @@ export class Footer extends React.Component {
         return (
             <div>
                 <footer>
-                    Copyright © 2017 | Rebecca Krummel | All rights reserved. | tbc
+                    Copyright © 2018 | Rebecca Krummel | All rights reserved.
                 </footer>
             </div>
         );
