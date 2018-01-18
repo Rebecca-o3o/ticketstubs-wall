@@ -71,7 +71,6 @@ footer {
     text-align: center;
     position: relative;
     bottom: 0;
-    height: 50px;
     width: 100%;
 }
 
@@ -436,6 +435,13 @@ strong
 /*.stub-action-overlay::before {
     opacity: 1;
 }*/
+
+/*===== footer styles ===== */
+
+.social-link {
+  margin: 5px;
+  color: rgb(110, 110, 110);
+}
 
 @media (max-width: 400px) {
 
