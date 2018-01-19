@@ -3,108 +3,110 @@ import React from 'react';
 import {StubsMenu} from './stubs-menu';
 import {Footer} from './footer';
 
-
 //===== components =====//
 
-export class Welcome extends React.Component{
-    constructor (props) {
-        super(props);
-        this.state = {};
+export class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-        this.openModal = this.openModal.bind(this);
-    }
+  render() {
+    return (<div>
 
-    openModal() {
-        // console.log('openRegisterModal - this is:', this);
-    }
+      <header>
+        <StubsMenu/>
+      </header>
 
-    render() {
-        // console.log("React Component - Welcome - this.props: ",this.props);
-        return (
-            <div>
+      <div className="welcome-background"></div>
 
-                <header>
-                    <StubsMenu />
-                </header>
+      <div className="welcome-section">
+        <h1>Welcome to your online Ticketwall!</h1>
 
-                <div className="welcome-background">
+        <div>
+          <p>
+            Collecting tickets and stubs from every concert you go to?
+          </p>
+          <p>
+            Do you pin them to your wall, glue them in a book or are they just loose all around your place?
+          </p>
 
+          <p>
+            Have more fun with your memories online!
+          </p>
+        </div>
 
-                </div>
+        <div>
 
-                <div className="welcome-section">
-                    <h1>Welcome to your online Ticketwall!</h1>
+          <div className="horizontal-line"></div>
 
-                    <div>
-                        <p>
-                            Collecting tickets and stubs from every concert you go to?
-                        </p>
-                        <p>
-                            Do you pin them to your wall, glue them in a book or are they just loose all around your place?
-                        </p>
+          <div className="welcome-features-container">
 
-                    </div>
+            <div className="feature-item">
+              <div className="check-icon">
+                <img src="/img/check.svg" alt="Check-icon"/>
+              </div>
 
-
-                    <div>
-                        <p>
-                            Have more fun with your memories online!
-                        </p>
-
-                        <div className="horizontal-line">
-                        </div>
-
-                        <div className="welcome-features-container">
-
-                            <ul className="welcome-features-list">
-                                <li>
-                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Access your Ticketwall wherever you are.
-                                </li>
-                                <li>
-                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Keep your concert memories at one place.
-                                </li>
-                                <li>
-                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Collect pictures, videos, and moments.
-                                </li>
-                                <li>
-                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Share your greatest concerts memories!
-                                </li>
-                                <li>
-                                    <img className="Check-icon" src="/img/check.svg" alt= "Check-icon"/>
-                                    Keep track of your concert history!
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="horizontal-line">
-                        </div>
-
-                        <p>
-                            Start right now!
-                        </p>
-
-                    </div>
-
-
-                    {/* <p>
-
-                        <button onClick={this.openModal}>Register</button>
-                        <button onClick={this.openModal}>Login</button>
-
-                    </p> */}
-
-                    {this.props.children}
-
-                </div>
-
-
-                <Footer />
-
+              <div className="feature-info">
+                Access your Ticketwall wherever you are.
+              </div>
             </div>
-        );
-    }
+
+            <div className="feature-item">
+              <div className="check-icon">
+                <img src="/img/check.svg" alt="Check-icon"/>
+              </div>
+
+              <div className="feature-info">
+                Keep your concert memories at one place.
+              </div>
+            </div>
+
+            <div className="feature-item">
+              <div className="check-icon">
+                <img src="/img/check.svg" alt="Check-icon"/>
+              </div>
+
+              <div className="feature-info">
+                Collect pictures, videos, and moments.
+              </div>
+            </div>
+
+            <div className="feature-item">
+              <div className="check-icon">
+                <img src="/img/check.svg" alt="Check-icon"/>
+              </div>
+
+              <div className="feature-info">
+                Keep track of your concert history!
+              </div>
+            </div>
+
+
+            <div className="feature-item">
+              <div className="check-icon">
+                <img src="/img/check.svg" alt="Check-icon"/>
+              </div>
+
+              <div className="feature-info">
+                Share your greatest concerts memories!
+              </div>
+            </div>
+
+          </div>
+
+          <div className="horizontal-line"></div>
+
+          <p>Try it right now - it's free!</p>
+
+        </div>
+
+        {this.props.children}
+
+      </div>
+
+      <Footer/>
+
+    </div>);
+  }
 }

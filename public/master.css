@@ -115,18 +115,19 @@ input {
     font-weight: normal;
     line-height: 2;
     padding: 90px 30px;
-    min-height: 1000px;
+    /* min-height: 1000px; */
 }
 
 .welcome-background {
     background-image: url('/img/offlinestubswall.jpg');
+    min-height: 300px;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    height: 300px;
-    align-items: center;
-    text-align: center;
-    position: relative;
+    /* align-items: center;
+    text-align: center; */
+    /* position: relative; */
 }
 
 .welcome-background::before {
@@ -139,23 +140,28 @@ input {
 }
 
 .welcome-features-container {
-    align-items: center;
-    width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.welcome-features-list {
-    list-style: none;
-    text-align: left;
-    width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+.feature-item {
+  display: flex;
+  align-items: center;
+  text-align: left
 }
 
-.welcome-features-list > li {
-    align-items: center;
-    display: flex;
+.check-icon {
+  margin-right: 5px;
+  height: 20px;
+}
+
+.check-icon img{
+  width: 20px;
+}
+
+.feature-info {
+  color: rgb(240, 240, 240);
 }
 
 .horizontal-line {
@@ -164,11 +170,6 @@ input {
     width: 80px;
     height: 5px;
     margin: 25px auto;
-}
-
-.Check-icon {
-    width: 20px;
-    margin-right: 10px;
 }
 
 .auth-button {
@@ -445,15 +446,11 @@ strong
 
 @media (max-width: 400px) {
 
-    .welcome-features-container {
-        width: 90%;
-    }
+  .welcome-features-container {
+    width: 90%;
+  }
 
-    .welcome-features-list {
-        width: 90%;
-    }
-
-    .welcome-features-list > li {
-        line-height: 1.5;
-    }
+  .feature-info {
+    font-size: 0.75em;
+  }
 }
