@@ -9222,11 +9222,9 @@
 
 	var _wall2 = _interopRequireDefault(_wall);
 
-	var _eventlist = __webpack_require__(656);
-
-	var _eventlist2 = _interopRequireDefault(_eventlist);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import EventList from './eventlist';
 
 	var store = exports.store = (0, _redux.createStore)(_reducers2.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default)));
 	store.subscribe(function () {
@@ -9262,8 +9260,7 @@
 	      _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _wall2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _wall2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/list', component: _eventlist2.default })
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _wall2.default })
 	      )
 	    )
 	  );
@@ -38215,8 +38212,6 @@
 	    var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
 
 	    _this.state = {};
-
-	    _this.openModal = _this.openModal.bind(_this);
 	    return _this;
 	  }
 
@@ -38252,52 +38247,88 @@
 	              'p',
 	              null,
 	              'Do you pin them to your wall, glue them in a book or are they just loose all around your place?'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'Have more fun with your memories online!'
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Have more fun with your memories online!'
-	            ),
 	            _react2.default.createElement('div', { className: 'horizontal-line' }),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'welcome-features-container' },
 	              _react2.default.createElement(
-	                'ul',
-	                { className: 'welcome-features-list' },
+	                'div',
+	                { className: 'feature-item' },
 	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'div',
+	                  { className: 'check-icon' },
+	                  _react2.default.createElement('img', { src: '/img/check.svg', alt: 'Check-icon' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'feature-info' },
 	                  'Access your Ticketwall wherever you are.'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'feature-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'check-icon' },
+	                  _react2.default.createElement('img', { src: '/img/check.svg', alt: 'Check-icon' })
 	                ),
 	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'div',
+	                  { className: 'feature-info' },
 	                  'Keep your concert memories at one place.'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'feature-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'check-icon' },
+	                  _react2.default.createElement('img', { src: '/img/check.svg', alt: 'Check-icon' })
 	                ),
 	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'div',
+	                  { className: 'feature-info' },
 	                  'Collect pictures, videos, and moments.'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'feature-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'check-icon' },
+	                  _react2.default.createElement('img', { src: '/img/check.svg', alt: 'Check-icon' })
 	                ),
 	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                  'Share your greatest concerts memories!'
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'div',
+	                  { className: 'feature-info' },
 	                  'Keep track of your concert history!'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'feature-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'check-icon' },
+	                  _react2.default.createElement('img', { src: '/img/check.svg', alt: 'Check-icon' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'feature-info' },
+	                  'Share your greatest concerts memories!'
 	                )
 	              )
 	            ),
@@ -38305,7 +38336,7 @@
 	            _react2.default.createElement(
 	              'p',
 	              null,
-	              'Start right now!'
+	              'Try it right now - it\'s free!'
 	            )
 	          ),
 	          this.props.children
@@ -54123,143 +54154,6 @@
 
 	    return MoreStubActions;
 	}(_react2.default.Component);
-
-/***/ }),
-/* 656 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.Eventlist = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(328);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(358);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _reactRedux = __webpack_require__(497);
-
-	var _axios = __webpack_require__(622);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _stubsMenu = __webpack_require__(601);
-
-	var _footer = __webpack_require__(620);
-
-	var _singleStub = __webpack_require__(650);
-
-	var _singleStub2 = _interopRequireDefault(_singleStub);
-
-	var _uploadTicketStub = __webpack_require__(651);
-
-	var _actions = __webpack_require__(652);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	//===== components =====//
-
-	var Eventlist = exports.Eventlist = function (_React$Component) {
-	    _inherits(Eventlist, _React$Component);
-
-	    function Eventlist(props) {
-	        _classCallCheck(this, Eventlist);
-
-	        var _this = _possibleConstructorReturn(this, (Eventlist.__proto__ || Object.getPrototypeOf(Eventlist)).call(this, props));
-
-	        _this.state = {};
-	        return _this;
-	    }
-
-	    _createClass(Eventlist, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            // console.log("Wall component did mount - this.props:", this.props);
-	            // console.log("Wall component did mount - this.state:", this.state);
-	            this.props.dispatch((0, _actions.loadTicketstubs)());
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-
-	            // if(!this.state.userInfo) {
-	            //     return <div className='loading'>Loading...</div>;
-	            // }
-
-	            var _props = this.props,
-	                dispatch = _props.dispatch,
-	                stubs = _props.stubs;
-
-
-	            var renderTicketStubs = function renderTicketStubs() {
-
-	                // console.log("fn: renderTicketStubs");
-
-	                return stubs.map(function (singleStub) {
-
-	                    // console.log("fn: stubs.map - singleStub:", singleStub);
-	                    // console.log("fn: stubs.map - stubImgUrl:", singleStub.stubImgUrl);
-
-	                    var imageUrl = singleStub.stubImgUrl;
-	                    // console.log("this is our id", singleStub.id);
-
-	                    return _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        singleStub.id,
-	                        singleStub.eventname,
-	                        singleStub.venue,
-	                        singleStub.eventdate,
-	                        singleStub.eventtime
-	                    );
-	                });
-	            };
-
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'header',
-	                    null,
-	                    _react2.default.createElement(_stubsMenu.StubsMenu, {
-	                        showUploader: this.showUploader
-	                    })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'ticketstubs-list-container' },
-	                    'liste'
-	                ),
-	                _react2.default.createElement(_footer.Footer, null)
-	            );
-	        }
-	    }]);
-
-	    return Eventlist;
-	}(_react2.default.Component);
-
-	function mapStateToProps(state) {
-
-	    return {
-	        stubs: state.stubs
-	    };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Eventlist);
 
 /***/ })
 /******/ ]);
