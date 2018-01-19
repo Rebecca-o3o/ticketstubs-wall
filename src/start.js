@@ -17,7 +17,7 @@ import reducer from './reducers';
 import { Welcome } from './welcome';
 import { Registration, Login } from './auths';
 import Wall from './wall';
-import EventList from './eventlist';
+// import EventList from './eventlist';
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
 store.subscribe(() => store.getState());
@@ -40,7 +40,7 @@ if (location.pathname == "/welcome/") {
     <Router history={browserHistory}>
       <Route path="/" component={Wall}>
         <IndexRoute component={Wall}/>
-        <Route path='/list' component={EventList}/>
+
 
       </Route>
     </Router>
