@@ -9186,7 +9186,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.store = undefined;
 
@@ -9230,44 +9230,43 @@
 
 	var store = exports.store = (0, _redux.createStore)(_reducers2.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default)));
 	store.subscribe(function () {
-	    return store.getState();
+	  return store.getState();
 	});
-	// store.subscribe(() => console.log("Start.js global store", store.getState()));
 
 	var router = void 0;
 
 	if (location.pathname == "/welcome/") {
-	    router = _react2.default.createElement(
-	        _reactRedux.Provider,
-	        { store: store },
-	        _react2.default.createElement(
-	            _reactRouter.Router,
-	            { history: _reactRouter.hashHistory },
-	            _react2.default.createElement(
-	                _reactRouter.Route,
-	                { path: '/', component: _welcome.Welcome },
-	                _react2.default.createElement(_reactRouter.IndexRoute, { component: _auths.Registration }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _auths.Login }),
-	                _react2.default.createElement(_reactRouter.Route, { path: 'wall/:userid', component: _wall2.default })
-	            )
-	        )
-	    );
+	  router = _react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(
+	      _reactRouter.Router,
+	      { history: _reactRouter.hashHistory },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: _welcome.Welcome },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _auths.Registration }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _auths.Login }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'wall/:userid', component: _wall2.default })
+	      )
+	    )
+	  );
 	} else if (location.pathname !== "/welcome/") {
-	    // console.log("hallo! location.pathname is not /welcome");
-	    router = _react2.default.createElement(
-	        _reactRedux.Provider,
-	        { store: store },
-	        _react2.default.createElement(
-	            _reactRouter.Router,
-	            { history: _reactRouter.browserHistory },
-	            _react2.default.createElement(
-	                _reactRouter.Route,
-	                { path: '/', component: _wall2.default },
-	                _react2.default.createElement(_reactRouter.IndexRoute, { component: _wall2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/list', component: _eventlist2.default })
-	            )
-	        )
-	    );
+
+	  router = _react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(
+	      _reactRouter.Router,
+	      { history: _reactRouter.browserHistory },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: _wall2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _wall2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/list', component: _eventlist2.default })
+	      )
+	    )
+	  );
 	}
 
 	_reactDom2.default.render(router, document.querySelector('main'));
@@ -38181,7 +38180,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.Welcome = undefined;
 
@@ -38208,121 +38207,115 @@
 	//===== components =====//
 
 	var Welcome = exports.Welcome = function (_React$Component) {
-	    _inherits(Welcome, _React$Component);
+	  _inherits(Welcome, _React$Component);
 
-	    function Welcome(props) {
-	        _classCallCheck(this, Welcome);
+	  function Welcome(props) {
+	    _classCallCheck(this, Welcome);
 
-	        var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Welcome.__proto__ || Object.getPrototypeOf(Welcome)).call(this, props));
 
-	        _this.state = {};
+	    _this.state = {};
 
-	        _this.openModal = _this.openModal.bind(_this);
-	        return _this;
+	    _this.openModal = _this.openModal.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Welcome, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'header',
+	          null,
+	          _react2.default.createElement(_stubsMenu.StubsMenu, null)
+	        ),
+	        _react2.default.createElement('div', { className: 'welcome-background' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'welcome-section' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Welcome to your online Ticketwall!'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'Collecting tickets and stubs from every concert you go to?'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'Do you pin them to your wall, glue them in a book or are they just loose all around your place?'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'Have more fun with your memories online!'
+	            ),
+	            _react2.default.createElement('div', { className: 'horizontal-line' }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'welcome-features-container' },
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'welcome-features-list' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'Access your Ticketwall wherever you are.'
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'Keep your concert memories at one place.'
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'Collect pictures, videos, and moments.'
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'Share your greatest concerts memories!'
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
+	                  'Keep track of your concert history!'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement('div', { className: 'horizontal-line' }),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'Start right now!'
+	            )
+	          ),
+	          this.props.children
+	        ),
+	        _react2.default.createElement(_footer.Footer, null)
+	      );
 	    }
+	  }]);
 
-	    _createClass(Welcome, [{
-	        key: 'openModal',
-	        value: function openModal() {
-	            // console.log('openRegisterModal - this is:', this);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            // console.log("React Component - Welcome - this.props: ",this.props);
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'header',
-	                    null,
-	                    _react2.default.createElement(_stubsMenu.StubsMenu, null)
-	                ),
-	                _react2.default.createElement('div', { className: 'welcome-background' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'welcome-section' },
-	                    _react2.default.createElement(
-	                        'h1',
-	                        null,
-	                        'Welcome to your online Ticketwall!'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Collecting tickets and stubs from every concert you go to?'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Do you pin them to your wall, glue them in a book or are they just loose all around your place?'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Have more fun with your memories online!'
-	                        ),
-	                        _react2.default.createElement('div', { className: 'horizontal-line' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'welcome-features-container' },
-	                            _react2.default.createElement(
-	                                'ul',
-	                                { className: 'welcome-features-list' },
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                                    'Access your Ticketwall wherever you are.'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                                    'Keep your concert memories at one place.'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                                    'Collect pictures, videos, and moments.'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                                    'Share your greatest concerts memories!'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'Check-icon', src: '/img/check.svg', alt: 'Check-icon' }),
-	                                    'Keep track of your concert history!'
-	                                )
-	                            )
-	                        ),
-	                        _react2.default.createElement('div', { className: 'horizontal-line' }),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Start right now!'
-	                        )
-	                    ),
-	                    this.props.children
-	                ),
-	                _react2.default.createElement(_footer.Footer, null)
-	            );
-	        }
-	    }]);
-
-	    return Welcome;
+	  return Welcome;
 	}(_react2.default.Component);
 
 /***/ }),
