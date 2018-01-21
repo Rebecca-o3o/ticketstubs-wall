@@ -38226,15 +38226,22 @@
 	          null,
 	          _react2.default.createElement(_stubsMenu.StubsMenu, null)
 	        ),
-	        _react2.default.createElement('div', { className: 'welcome-background' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'welcome-background' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'caption' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'border' },
+	              'Welcome to your Ticketwall!'
+	            )
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'welcome-section' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'Welcome to your online Ticketwall!'
-	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,

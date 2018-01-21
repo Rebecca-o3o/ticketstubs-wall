@@ -18,10 +18,13 @@ export class Welcome extends React.Component {
         <StubsMenu/>
       </header>
 
-      <div className="welcome-background"></div>
+      <div className="welcome-background">
+        <div className="caption">
+          <span className="border">Welcome to your Ticketwall!</span>
+        </div>
+      </div>
 
       <div className="welcome-section">
-        <h1>Welcome to your online Ticketwall!</h1>
 
         <div>
           <p>
