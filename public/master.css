@@ -125,12 +125,12 @@ input {
     background-position: center;
     background-size: cover;
     position: relative;
+    box-shadow: inset 0px -15px 19px -8px rgba(0,0,0,0.75);
 }
 
 .caption {
     position: absolute;
-    left: 0;
-    top: 50%;
+    top: 40%;
     width: 100%;
     text-align: center;
 }

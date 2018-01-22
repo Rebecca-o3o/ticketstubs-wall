@@ -38187,6 +38187,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(499);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _stubsMenu = __webpack_require__(601);
 
 	var _footer = __webpack_require__(620);
@@ -38355,6 +38359,10 @@
 
 	  return Welcome;
 	}(_react2.default.Component);
+
+	Welcome.propTypes = {
+	  children: _propTypes2.default.node
+	};
 
 /***/ }),
 /* 601 */
@@ -48476,8 +48484,13 @@
 	            null,
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://www.instagram.com/yourTicketwall/" },
+	              { href: "https://www.instagram.com/yourTicketwall" },
 	              _react2.default.createElement("i", { className: "fab fa-instagram fa-2x social-link" })
+	            ),
+	            _react2.default.createElement(
+	              "a",
+	              { href: "https://www.pinterest.de/yourTicketwall/ticket-collections/" },
+	              _react2.default.createElement("i", { className: "fab fa-pinterest-square fa-2x social-link" })
 	            ),
 	            _react2.default.createElement(
 	              "a",
@@ -48486,7 +48499,7 @@
 	            ),
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://www.facebook.com/YourTicketwall-1958778687777949/" },
+	              { href: "https://www.facebook.com/YourTicketwall-1958778687777949" },
 	              _react2.default.createElement("i", { className: "fab fa-facebook-square fa-2x social-link" })
 	            )
 	          ),

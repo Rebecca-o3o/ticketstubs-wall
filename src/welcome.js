@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // import {Link} from 'react-router';
 import {StubsMenu} from './stubs-menu';
 import {Footer} from './footer';
@@ -17,7 +18,6 @@ export class Welcome extends React.Component {
       <header>
         <StubsMenu/>
       </header>
-
       <div className="welcome-background">
         <div className="caption">
           <span className="border">Welcome to your Ticketwall!</span>
@@ -113,3 +113,7 @@ export class Welcome extends React.Component {
     </div>);
   }
 }
+
+Welcome.propTypes = {
+  children: PropTypes.node
+};
