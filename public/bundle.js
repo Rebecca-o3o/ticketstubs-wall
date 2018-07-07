@@ -48484,29 +48484,29 @@
 	            null,
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://www.instagram.com/yourTicketwall" },
+	              { href: "https://www.instagram.com/myticketwall" },
 	              _react2.default.createElement("i", { className: "fab fa-instagram fa-2x social-link" })
 	            ),
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://www.pinterest.de/yourTicketwall/ticket-collections/" },
+	              { href: "https://www.pinterest.de/myticketwall/ticket-collections/" },
 	              _react2.default.createElement("i", { className: "fab fa-pinterest-square fa-2x social-link" })
 	            ),
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://twitter.com/yourTicketwall" },
+	              { href: "https://twitter.com/myticketwall" },
 	              _react2.default.createElement("i", { className: "fab fa-twitter-square fa-2x social-link" })
 	            ),
 	            _react2.default.createElement(
 	              "a",
-	              { href: "https://www.facebook.com/YourTicketwall-1958778687777949" },
+	              { href: "https://www.facebook.com/myticketwall/" },
 	              _react2.default.createElement("i", { className: "fab fa-facebook-square fa-2x social-link" })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            "p",
 	            null,
-	            "Copyright \xA9 2017-2018 | Rebecca Krummel | All rights reserved."
+	            "Copyright \xA9 2017-2018 | All rights reserved."
 	          )
 	        )
 	      );
